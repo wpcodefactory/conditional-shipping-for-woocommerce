@@ -1,0 +1,1 @@
+jQuery(document).ready(function(){jQuery('body').on('change input',alg_wc_cs_update_checkout.selectors,function(){jQuery('body').trigger('update_checkout')})});
