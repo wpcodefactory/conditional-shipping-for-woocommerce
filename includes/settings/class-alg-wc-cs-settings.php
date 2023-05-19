@@ -20,7 +20,7 @@ class Alg_WC_Conditional_Shipping_Settings extends WC_Settings_Page {
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) `width:100%;`?
+	 * @todo    (dev) `width:100%;`?
 	 */
 	function __construct() {
 		$this->id    = 'alg_wc_cond_shipping';

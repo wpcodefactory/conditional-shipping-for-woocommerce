@@ -33,9 +33,9 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) cache: `$this->shipping_methods`: `$method_id` and `$method_title`
-	 * @todo    [next] (dev) restyle condition titles, e.g. add icons
-	 * @todo    [next] (dev) `alg_wc_cond_shipping_settings_...`: find better solution?
+	 * @todo    (dev) cache: `$this->shipping_methods`: `$method_id` and `$method_title`
+	 * @todo    (dev) restyle condition titles, e.g. add icons
+	 * @todo    (dev) `alg_wc_cond_shipping_settings_...`: find better solution?
 	 */
 	function get_settings() {
 		$settings = array();
@@ -132,9 +132,9 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	 * @version 1.6.1
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (desc) add "Update the cart after you change the settings" note to all sections?
-	 * @todo    [maybe] (desc) `date_time`: more examples?
-	 * @todo    [maybe] (desc) `date_time`: more notes, e.g. __( 'Dates in ranges are inclusive', 'conditional-shipping-for-woocommerce' )?
+	 * @todo    (desc) add "Update the cart after you change the settings" note to all sections?
+	 * @todo    (desc) `date_time`: more examples?
+	 * @todo    (desc) `date_time`: more notes, e.g. __( 'Dates in ranges are inclusive', 'conditional-shipping-for-woocommerce' )?
 	 */
 	function get_section_desc() {
 		switch ( $this->id ) {
@@ -170,7 +170,7 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	 * @version 1.5.1
 	 * @since   1.0.0
 	 *
-	 * @todo    [later] (dev) `date_time`: desc: apply `strtotime()` to the current value (i.e. so user could see the parsed time right away)
+	 * @todo    (dev) `date_time`: desc: apply `strtotime()` to the current value (i.e. so user could see the parsed time right away)
 	 */
 	function get_field( $field ) {
 		switch ( $this->id ) {
@@ -221,7 +221,7 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) `product`: ajax
+	 * @todo    (dev) `product`: ajax
 	 */
 	function get_field_options() {
 

@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - General Section Settings
  *
- * @version 1.6.0
+ * @version 1.7.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -32,7 +32,7 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) add links to sections
+	 * @todo    (dev) add links to sections
 	 */
 	function get_affected_conditions_message( $conditions ) {
 		return sprintf( __( 'This option affects only these conditions: %s.', 'conditional-shipping-for-woocommerce' ), '"' . implode( '", "', $conditions ) . '"' );
@@ -55,12 +55,12 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.6.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) Available Conditions: link to each condition separately, e.g. `admin_url( 'admin.php?page=wc-settings&tab=alg_wc_cond_shipping&section=' . $section_id . '#' . 'wpjup_wc_cond_shipping_' . $condition_id . '_enabled' )`
-	 * @todo    [maybe] (desc) Checkout notice: better desc?
-	 * @todo    [maybe] (desc) Debug: better desc?
+	 * @todo    (dev) Available Conditions: link to each condition separately, e.g. `admin_url( 'admin.php?page=wc-settings&tab=alg_wc_cond_shipping&section=' . $section_id . '#' . 'wpjup_wc_cond_shipping_' . $condition_id . '_enabled' )`
+	 * @todo    (desc) Checkout notice: better desc?
+	 * @todo    (desc) Debug: better desc?
 	 */
 	function get_settings() {
 
@@ -105,6 +105,22 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 				'id'       => 'wpjup_wc_cond_shipping_add_variations',
 				'type'     => 'checkbox',
 				'default'  => 'yes',
+			),
+			array(
+				'title'    => __( 'Logical operator', 'conditional-shipping-for-woocommerce' ),
+				'desc'     => sprintf( __( 'Logical operator used when multiple conditions are enabled, for example: %s', 'conditional-shipping-for-woocommerce' ),
+					sprintf( '<br><em>* %s</em><br><em>* %s</em>',
+						__( 'Enable free shipping if an order is over a certain amount AND if a product is in a "Free" shipping class.', 'conditional-shipping-for-woocommerce' ),
+						__( 'Enable free shipping if an order is over a certain amount OR if a product is in a "Free" shipping class.', 'conditional-shipping-for-woocommerce' )
+					) ),
+				'id'       => 'alg_wc_cond_shipping_logical_operator',
+				'type'     => 'select',
+				'class'    => 'chosen_select',
+				'default'  => 'and',
+				'options'  => array(
+					'and' => __( 'AND', 'conditional-shipping-for-woocommerce' ),
+					'or'  => __( 'OR', 'conditional-shipping-for-woocommerce' ),
+				),
 			),
 			array(
 				'title'    => __( 'Require all', 'conditional-shipping-for-woocommerce' ),
