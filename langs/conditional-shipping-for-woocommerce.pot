@@ -130,12 +130,12 @@ msgstr ""
 msgid "Exclude Date/Time"
 msgstr ""
 
-#: includes/class-alg-wc-cs-core.php:363
+#: includes/class-alg-wc-cs-core.php:367
 #, php-format
 msgid "Date/time range: from %s to %s; current time: %s; result: %s"
 msgstr ""
 
-#: includes/class-alg-wc-cs-core.php:610
+#: includes/class-alg-wc-cs-core.php:614
 #, php-format
 msgid "Customer city: %s"
 msgstr ""

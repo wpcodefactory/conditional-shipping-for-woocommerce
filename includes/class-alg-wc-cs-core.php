@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -208,12 +208,16 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * validate_shipping_method.
 	 *
-	 * @version 1.7.0
+	 * @version 1.7.1
 	 * @since   1.4.0
+	 *
+	 * @see     https://github.com/woocommerce/woocommerce/blob/7.7.0/plugins/woocommerce/includes/class-wc-shipping-rate.php
 	 */
 	function validate_shipping_method( $rate, $package ) {
 
-		switch ( $this->logical_operator ) {
+		$logical_operator = apply_filters( 'alg_wc_cond_shipping_logical_operator', $this->logical_operator, $rate, $package );
+
+		switch ( $logical_operator ) {
 
 			case 'OR':
 				$do_show = true;
