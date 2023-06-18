@@ -1,9 +1,9 @@
 === WPFactory Conditional Shipping for WooCommerce ===
-Contributors: wpcodefactory, algoritmika, anbinder
+Contributors: wpcodefactory, algoritmika, anbinder, omardabbas, kousikmukherjeeli
 Tags: woocommerce, shipping, woo commerce
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,6 +45,9 @@ You can set these conditions for shipping methods:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Conditional Shipping".
 
 == Changelog ==
+
+= 1.7.2 - 18/06/2023 =
+* WC tested up to: 7.8.
 
 = 1.7.1 - 25/05/2023 =
 * Dev - Developers - `alg_wc_cond_shipping_logical_operator` filter added.
