@@ -1,9 +1,9 @@
 === WPFactory Conditional Shipping for WooCommerce ===
-Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
+Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, shipping, woo commerce
 Requires at least: 4.4
-Tested up to: 6.3
-Stable tag: 1.7.3
+Tested up to: 6.4
+Stable tag: 1.7.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,6 +38,10 @@ You can set these conditions for shipping methods:
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/conditional-shipping-for-woocommerce/).
 
+### &#8505; More ###
+
+* The plugin is **"High-Performance Order Storage (HPOS)"** compatible.
+
 == Installation ==
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
@@ -46,10 +50,15 @@ You can set these conditions for shipping methods:
 
 == Changelog ==
 
+= 1.7.4 - 20/11/2023 =
+* Dev – "High-Performance Order Storage (HPOS)" compatibility.
+* WC tested up to: 8.3.
+* Tested up to: 6.4.
+
 = 1.7.3 - 24/09/2023 =
 * WC tested up to: 8.1.
 * Tested up to: 6.3.
-* update plugin icon, banner.
+* Plugin icon, banner updated.
 
 = 1.7.2 - 18/06/2023 =
 * WC tested up to: 7.8.

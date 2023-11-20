@@ -145,11 +145,11 @@ msgstr ""
 msgid "%shipping_method% is not available."
 msgstr ""
 
-#: includes/class-alg-wc-cs.php:130
+#: includes/class-alg-wc-cs.php:152
 msgid "Settings"
 msgstr ""
 
-#: includes/class-alg-wc-cs.php:133
+#: includes/class-alg-wc-cs.php:155
 msgid "Go Pro"
 msgstr ""
 

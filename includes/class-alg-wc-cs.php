@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Main Class
  *
- * @version 1.5.0
+ * @version 1.7.4
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -49,7 +49,7 @@ final class Alg_WC_Conditional_Shipping {
 	/**
 	 * Alg_WC_Conditional_Shipping Constructor.
 	 *
-	 * @version 1.5.0
+	 * @version 1.7.4
 	 * @since   1.0.0
 	 *
 	 * @access  public
@@ -63,6 +63,9 @@ final class Alg_WC_Conditional_Shipping {
 
 		// Set up localisation
 		add_action( 'init', array( $this, 'localize' ) );
+
+		// Declare compatibility with custom order tables for WooCommerce
+		add_action( 'before_woocommerce_init', array( $this, 'wc_declare_compatibility' ) );
 
 		// Pro
 		if ( 'conditional-shipping-for-woocommerce-pro.php' === basename( ALG_WC_CONDITIONAL_SHIPPING_FILE ) ) {
@@ -86,6 +89,25 @@ final class Alg_WC_Conditional_Shipping {
 	 */
 	function localize() {
 		load_plugin_textdomain( 'conditional-shipping-for-woocommerce', false, dirname( plugin_basename( ALG_WC_CONDITIONAL_SHIPPING_FILE ) ) . '/langs/' );
+	}
+
+	/**
+	 * wc_declare_compatibility.
+	 *
+	 * @version 1.7.4
+	 * @since   1.7.4
+	 *
+	 * @see     https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book#declaring-extension-incompatibility
+	 */
+	function wc_declare_compatibility() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			$files = ( defined( 'ALG_WC_CONDITIONAL_SHIPPING_FILE_FREE' ) ?
+				array( ALG_WC_CONDITIONAL_SHIPPING_FILE, ALG_WC_CONDITIONAL_SHIPPING_FILE_FREE ) :
+				array( ALG_WC_CONDITIONAL_SHIPPING_FILE ) );
+			foreach ( $files as $file ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $file, true );
+			}
+		}
 	}
 
 	/**
