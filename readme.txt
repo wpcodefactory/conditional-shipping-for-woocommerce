@@ -1,9 +1,9 @@
 === WPFactory Conditional Shipping for WooCommerce ===
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
-Tags: woocommerce, shipping, woo commerce
+Tags: woocommerce, shipping, woocommerce shipping, conditional shipping, shipping method
 Requires at least: 4.4
 Tested up to: 6.4
-Stable tag: 1.7.4
+Stable tag: 1.8.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,12 @@ You can set these conditions for shipping methods:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Conditional Shipping".
 
 == Changelog ==
+
+= 1.8.0 - 15/03/2024 =
+* Fix - Cart instead of package - Bug fixed (multiple packages).
+* Dev - PHP 8.2 compatibility - "Creation of dynamic property is deprecated" notice fixed.
+* WC tested up to: 8.6.
+* Readme.txt - Tags updated.
 
 = 1.7.4 - 20/11/2023 =
 * Dev – "High-Performance Order Storage (HPOS)" compatibility.

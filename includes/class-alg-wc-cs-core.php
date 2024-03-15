@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 1.7.1
+ * @version 1.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,6 +17,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * conditions.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $conditions;
@@ -24,6 +25,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * condition_options.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $condition_options;
@@ -31,6 +33,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * options: do_add_variations.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $do_add_variations;
@@ -38,6 +41,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * options: validate_all_for_include.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $validate_all_for_include;
@@ -45,27 +49,15 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * options: cart_instead_of_package.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $cart_instead_of_package;
 
 	/**
-	 * is_cart_data.
-	 *
-	 * @since   1.0.0
-	 */
-	public $is_cart_data;
-
-	/**
-	 * cart_or_package_items.
-	 *
-	 * @since   1.0.0
-	 */
-	public $cart_or_package_items;
-
-	/**
 	 * customer_id.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $customer_id;
@@ -73,6 +65,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * customer_role.
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $customer_role;
@@ -80,20 +73,15 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * customer_city
 	 *
+	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public $customer_city;
 
 	/**
-	 * total_in_cart.
-	 *
-	 * @since   1.0.0
-	 */
-	public $total_in_cart;
-
-	/**
 	 * logical_operator.
 	 *
+	 * @version 1.7.0
 	 * @since   1.7.0
 	 */
 	public $logical_operator;
@@ -101,6 +89,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * do_debug.
 	 *
+	 * @version 1.7.0
 	 * @since   1.7.0
 	 */
 	public $do_debug;
@@ -108,6 +97,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * condition_sections.
 	 *
+	 * @version 1.7.0
 	 * @since   1.7.0
 	 */
 	public $condition_sections;
@@ -381,19 +371,35 @@ class Alg_WC_Conditional_Shipping_Core {
 	 * @since   1.2.0
 	 */
 	function get_current_payment_gateway() {
+
 		if ( isset( WC()->session->chosen_payment_method ) ) {
+
+			// Session
 			return WC()->session->chosen_payment_method;
+
 		} elseif ( ! empty( $_REQUEST['payment_method'] ) ) {
+
+			// Submitted data
 			return sanitize_key( $_REQUEST['payment_method'] );
+
 		} elseif ( '' != ( $default_gateway = get_option( 'woocommerce_default_gateway' ) ) ) {
+
+			// Default gateway
 			return $default_gateway;
+
 		} else {
+
+			// First available gateway
 			$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 			if ( ! empty( $available_gateways ) ) {
 				return current( array_keys( $available_gateways ) );
 			}
+
 		}
+
+		// No current gateway
 		return false;
+
 	}
 
 	/**
@@ -488,36 +494,43 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * check_for_cart_data.
 	 *
-	 * @version 1.0.0
+	 * @version 1.8.0
 	 * @since   1.0.0
 	 */
 	function check_for_cart_data( $package ) {
-		if ( ! isset( $this->is_cart_data ) ) {
-			$this->is_cart_data = true;
-			if ( $this->cart_instead_of_package ) {
-				if ( ! isset( WC()->cart ) || WC()->cart->is_empty() ) {
-					$this->is_cart_data = false;
-				}
-			} else {
-				if ( ! isset( $package['contents'] ) ) {
-					$this->is_cart_data = false;
-				}
-			}
-		}
-		return $this->is_cart_data;
+		return ( $this->cart_instead_of_package ?
+			( isset( WC()->cart ) && ! WC()->cart->is_empty() ) :
+			! empty( $package['contents'] )
+		);
 	}
 
 	/**
 	 * get_items.
 	 *
-	 * @version 1.0.0
+	 * @version 1.8.0
 	 * @since   1.0.0
 	 */
 	function get_items( $package ) {
-		if ( ! isset( $this->cart_or_package_items ) ) {
-			$this->cart_or_package_items = ( $this->cart_instead_of_package ? WC()->cart->get_cart() : $package['contents'] );
-		}
-		return $this->cart_or_package_items;
+		return ( $this->cart_instead_of_package ?
+			WC()->cart->get_cart() :
+			$package['contents']
+		);
+	}
+
+	/**
+	 * get_total_cart_amount.
+	 *
+	 * @version 1.8.0
+	 * @since   1.0.0
+	 *
+	 * @todo    (dev) use subtotal?
+	 * @todo    (feature) add option to include or exclude taxes when calculating cart total
+	 */
+	function get_total_cart_amount( $package ) {
+		return ( $this->cart_instead_of_package ?
+			WC()->cart->cart_contents_total :
+			$package['contents_cost']
+		);
 	}
 
 	/**
@@ -616,22 +629,6 @@ class Alg_WC_Conditional_Shipping_Core {
 		}
 
 		return $this->customer_city;
-	}
-
-	/**
-	 * get_total_cart_amount.
-	 *
-	 * @version 1.0.0
-	 * @since   1.0.0
-	 *
-	 * @todo    (dev) use subtotal?
-	 * @todo    (feature) add option to include or exclude taxes when calculating cart total
-	 */
-	function get_total_cart_amount( $package ) {
-		if ( ! isset( $this->total_in_cart ) ) {
-			$this->total_in_cart = ( $this->cart_instead_of_package ? WC()->cart->cart_contents_total : $package['contents_cost'] );
-		}
-		return $this->total_in_cart;
 	}
 
 }

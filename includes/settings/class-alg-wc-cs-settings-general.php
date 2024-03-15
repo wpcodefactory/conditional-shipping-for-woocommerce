@@ -58,6 +58,7 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
+	 * @todo    (dev) `wpjup_wc_cond_shipping_cart_not_package`: remove it (i.e., always use packages, not cart)
 	 * @todo    (dev) Available Conditions: link to each condition separately, e.g. `admin_url( 'admin.php?page=wc-settings&tab=alg_wc_cond_shipping&section=' . $section_id . '#' . 'wpjup_wc_cond_shipping_' . $condition_id . '_enabled' )`
 	 * @todo    (desc) Checkout notice: better desc?
 	 * @todo    (desc) Debug: better desc?

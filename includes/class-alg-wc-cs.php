@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Main Class
  *
- * @version 1.7.4
+ * @version 1.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -21,6 +21,14 @@ final class Alg_WC_Conditional_Shipping {
 	 * @since 1.0.0
 	 */
 	public $version = ALG_WC_CONDITIONAL_SHIPPING_VERSION;
+
+	/**
+	 * core.
+	 *
+	 * @version 1.8.0
+	 * @since   1.8.0
+	 */
+	public $core;
 
 	/**
 	 * @var   Alg_WC_Conditional_Shipping The single instance of the class

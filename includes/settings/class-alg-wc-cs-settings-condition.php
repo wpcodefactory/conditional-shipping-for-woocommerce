@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Condition Section Settings
  *
- * @version 1.6.1
+ * @version 1.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -13,6 +13,22 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Alg_WC_Conditional_Shipping_Settings_Condition' ) ) :
 
 class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_Shipping_Settings_Section {
+
+	/**
+	 * conditions.
+	 *
+	 * @version 1.8.0
+	 * @since   1.8.0
+	 */
+	public $conditions;
+
+	/**
+	 * cached_options.
+	 *
+	 * @version 1.8.0
+	 * @since   1.8.0
+	 */
+	public $cached_options;
 
 	/**
 	 * Constructor.
