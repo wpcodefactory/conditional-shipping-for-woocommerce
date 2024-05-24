@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, shipping, woocommerce shipping, conditional shipping, shipping method
 Requires at least: 4.4
-Tested up to: 6.4
-Stable tag: 1.8.0
+Tested up to: 6.5
+Stable tag: 1.9.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ You can set these conditions for shipping methods:
 
 ### &#127942; Premium Version ###
 
-[WPFactory Conditional Shipping for WooCommerce Pro](https://wpfactory.com/item/conditional-shipping-for-woocommerce/) allows you to set conditions on **per shipping instance** basis. For example if you want to set different conditions for different "Flat rate" method instances in different or same shipping zones.
+[WPFactory Conditional Shipping for WooCommerce Pro](https://wpfactory.com/item/conditional-shipping-for-woocommerce/) allows you to set conditions on **per shipping instance** basis. For example, if you want to set different conditions for different "Flat rate" method instances in different or same shipping zones.
 
 ### &#128472; Feedback ###
 
@@ -49,6 +49,16 @@ You can set these conditions for shipping methods:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Conditional Shipping".
 
 == Changelog ==
+
+= 1.9.0 - 24/05/2024 =
+* Dev - "Additional notice" options added (to all conditions).
+* Dev - Products - Admin - Product dropdowns use AJAX now.
+* Dev - Date/Time - Admin - Section description updated.
+* Dev - General - Admin settings rearranged.
+* Dev - Code refactoring.
+* WC tested up to: 8.9.
+* Tested up to: 6.5.
+* `woocommerce` added to the "Requires Plugins" (plugin header).
 
 = 1.8.0 - 15/03/2024 =
 * Fix - Cart instead of package - Bug fixed (multiple packages).
@@ -98,7 +108,7 @@ You can set these conditions for shipping methods:
 * WC tested up to: 6.0.
 
 = 1.5.0 - 08/09/2021 =
-* Dev - Admin settings rearranged: sections merged, e.g. "Minimum Order Amount" and "Maximum Order Amount" to "Order Amount", etc.
+* Dev - Admin settings rearranged: sections merged, e.g., "Minimum Order Amount" and "Maximum Order Amount" to "Order Amount", etc.
 * Dev - Admin settings descriptions updated.
 * Dev - Plugin is initialized on the `plugins_loaded` action now.
 * Dev - Code refactoring.

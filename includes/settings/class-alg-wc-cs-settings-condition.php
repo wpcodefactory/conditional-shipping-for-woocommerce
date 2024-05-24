@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Condition Section Settings
  *
- * @version 1.8.0
+ * @version 1.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -46,15 +46,16 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.5.0
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) cache: `$this->shipping_methods`: `$method_id` and `$method_title`
-	 * @todo    (dev) restyle condition titles, e.g. add icons
+	 * @todo    (dev) restyle condition titles, e.g., add icons
 	 * @todo    (dev) `alg_wc_cond_shipping_settings_...`: find better solution?
 	 */
 	function get_settings() {
 		$settings = array();
+
 		$settings = array_merge( $settings, array(
 			array(
 				'title'    => $this->desc,
@@ -67,8 +68,11 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 				'id'       => 'alg_wc_cond_shipping_' . $this->id . '_options',
 			),
 		) );
-		$shipping_methods = apply_filters( 'alg_wc_cond_shipping_settings_shipping_methods', WC()->shipping()->load_shipping_methods() );
+
+		$shipping_methods = apply_filters( 'alg_wc_cond_shipping_settings_shipping_methods',
+			WC()->shipping()->load_shipping_methods() );
 		foreach ( $this->conditions as $condition ) {
+
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => alg_wc_cond_shipping()->core->conditions[ $condition ],
@@ -84,19 +88,49 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 					'default'  => 'no',
 				),
 			) );
+
 			foreach ( $shipping_methods as $method ) {
-				$method_id    = apply_filters( 'alg_wc_cond_shipping_settings_method_id',    ( is_object( $method ) ? $method->id                 : '' ), $method );
-				$method_title = apply_filters( 'alg_wc_cond_shipping_settings_method_title', ( is_object( $method ) ? $method->get_method_title() : '' ), $method );
-				$id           = "wpjup_wc_cond_shipping_{$condition}_method[{$method_id}]";
-				$settings     = array_merge( $settings, $this->get_field( array( 'title' => $method_title, 'id' => $id ) ) );
+
+				$method_id = apply_filters( 'alg_wc_cond_shipping_settings_method_id',
+					( is_object( $method ) ? $method->id : '' ), $method );
+				$method_title = apply_filters( 'alg_wc_cond_shipping_settings_method_title',
+					( is_object( $method ) ? $method->get_method_title() : '' ), $method );
+				$id = "wpjup_wc_cond_shipping_{$condition}_method[{$method_id}]";
+
+				$settings = array_merge(
+					$settings,
+					$this->get_field(
+						array( 'title' => $method_title, 'id' => $id ),
+						array( 'condition' => $condition, 'method_id' => $method_id )
+					)
+				);
+
 			}
+
 			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Additional notice', 'conditional-shipping-for-woocommerce' ),
+					'desc'     => __( 'Enable', 'conditional-shipping-for-woocommerce' ),
+					'desc_tip' => __( 'In addition to hiding the shipping method, you can also add extra notice on the cart and checkout pages.', 'conditional-shipping-for-woocommerce' ),
+					'id'       => 'wpjup_wc_cond_shipping_' . $condition . '_notice[enabled]',
+					'type'     => 'checkbox',
+					'default'  => 'no',
+				),
+				array(
+					'desc'     => sprintf( __( 'Available placeholder(s): %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>%shipping_method%</code>' ),
+					'id'       => 'wpjup_wc_cond_shipping_' . $condition . '_notice[content]',
+					'type'     => 'text',
+					'default'  => __( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ),
+				),
 				array(
 					'type'     => 'sectionend',
 					'id'       => 'alg_wc_cond_shipping_' . $condition . '_options',
 				),
 			) );
+
 		}
+
 		return $settings;
 	}
 
@@ -111,33 +145,33 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 
 			case 'date_time_incl':
 				$examples = array(
-						sprintf( __( 'Enable shipping method only before 3:00 PM each day: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>00:00:00-14:59:59</code>' ),
-						sprintf( __( 'Enable shipping method only before 3:00 PM each day, or before 5:00 PM on Mondays: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>00:00:00-14:59:59;Monday 00:00:00-Monday 16:59:59</code>' ),
-						sprintf( __( 'Enable shipping method for the summer months only: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>first day of June - last day of August 23:59:59</code>' ),
-						sprintf( __( 'Enable shipping method for the February only: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>first day of February - last day of February 23:59:59</code>' ),
-					);
-					$example_icon = '<span class="dashicons dashicons-lightbulb"></span> ';
-					$examples     = '<p>' . $example_icon . implode( '</p><p>' . $example_icon, $examples ) . '</p>';
-					return '<h4>' . __( 'Examples', 'conditional-shipping-for-woocommerce' ) . '</h4>' . $examples;
+					sprintf( __( 'Enable shipping method only before 3:00 PM each day: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>00:00:00-14:59:59</code>' ),
+					sprintf( __( 'Enable shipping method only before 3:00 PM each day, or before 5:00 PM on Mondays: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>00:00:00-14:59:59;Monday 00:00:00-Monday 16:59:59</code>' ),
+					sprintf( __( 'Enable shipping method for the summer months only: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>first day of June - last day of August 23:59:59</code>' ),
+					sprintf( __( 'Enable shipping method for the February only: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>first day of February - last day of February 23:59:59</code>' ),
+				);
+				$example_icon = '<span class="dashicons dashicons-lightbulb"></span> ';
+				$examples = '<p>' . $example_icon . implode( '</p><p>' . $example_icon, $examples ) . '</p>';
+				return '<h4>' . __( 'Examples', 'conditional-shipping-for-woocommerce' ) . '</h4>' . $examples;
 
 			case 'date_time_excl':
 				$examples = array(
-						sprintf( __( 'Disable shipping method each day after 4:00 PM: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>16:00:00-23:59:59</code>' ),
-						sprintf( __( 'Disable shipping method each day after 4:00 PM, and for the whole day on weekends: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>16:00:00-23:59:59;Saturday 00:00:00-Sunday 23:59:59</code>' ),
-						sprintf( __( 'Disable shipping method for the summer months: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>first day of June - last day of August 23:59:59</code>' ),
-						sprintf( __( 'Disable shipping method for the February: %s', 'conditional-shipping-for-woocommerce' ),
-							'<code>first day of February - last day of February 23:59:59</code>' ),
-					);
-					$example_icon = '<span class="dashicons dashicons-lightbulb"></span> ';
-					$examples     = '<p>' . $example_icon . implode( '</p><p>' . $example_icon, $examples ) . '</p>';
-					return '<h4>' . __( 'Examples', 'conditional-shipping-for-woocommerce' ) . '</h4>' . $examples;
+					sprintf( __( 'Disable shipping method each day after 4:00 PM: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>16:00:00-23:59:59</code>' ),
+					sprintf( __( 'Disable shipping method each day after 4:00 PM, and for the whole day on weekends: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>16:00:00-23:59:59;Saturday 00:00:00-Sunday 23:59:59</code>' ),
+					sprintf( __( 'Disable shipping method for the summer months: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>first day of June - last day of August 23:59:59</code>' ),
+					sprintf( __( 'Disable shipping method for the February: %s', 'conditional-shipping-for-woocommerce' ),
+						'<code>first day of February - last day of February 23:59:59</code>' ),
+				);
+				$example_icon = '<span class="dashicons dashicons-lightbulb"></span> ';
+				$examples = '<p>' . $example_icon . implode( '</p><p>' . $example_icon, $examples ) . '</p>';
+				return '<h4>' . __( 'Examples', 'conditional-shipping-for-woocommerce' ) . '</h4>' . $examples;
 
 		}
 	}
@@ -145,25 +179,26 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	/**
 	 * get_section_desc.
 	 *
-	 * @version 1.6.1
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (desc) add "Update the cart after you change the settings" note to all sections?
 	 * @todo    (desc) `date_time`: more examples?
-	 * @todo    (desc) `date_time`: more notes, e.g. __( 'Dates in ranges are inclusive', 'conditional-shipping-for-woocommerce' )?
+	 * @todo    (desc) `date_time`: more notes, e.g., __( 'Dates in ranges are inclusive', 'conditional-shipping-for-woocommerce' )?
 	 */
 	function get_section_desc() {
 		switch ( $this->id ) {
 
 			case 'user_membership':
-				return '<span class="dashicons dashicons-info"></span> ' . sprintf( __( 'This section requires <a target="_blank" href="%s">WooCommerce Memberships</a> plugin.', 'conditional-shipping-for-woocommerce' ),
-					'https://woocommerce.com/products/woocommerce-memberships/' );
+				return '<span class="dashicons dashicons-info"></span> ' .
+					sprintf( __( 'This section requires <a target="_blank" href="%s">WooCommerce Memberships</a> plugin.', 'conditional-shipping-for-woocommerce' ),
+						'https://woocommerce.com/products/woocommerce-memberships/' );
 
 			case 'date_time':
 				$notes = array(
-					sprintf( __( 'Options must be set as date range(s) in %s format, i.e. dates must be separated with the hyphen %s symbol.', 'conditional-shipping-for-woocommerce' ),
+					sprintf( __( 'Options must be set as date range(s) in %s format, i.e., dates must be separated with the hyphen %s symbol.', 'conditional-shipping-for-woocommerce' ),
 						'<code>from-to</code>', '<code>-</code>' ),
-					sprintf( __( 'You can add multiple date ranges separated by the semicolon %s symbol, i.e. %s. Algorithm stops on first matching date range.', 'conditional-shipping-for-woocommerce' ),
+					sprintf( __( 'You can add multiple date ranges separated by the semicolon %s symbol, i.e., %s. Algorithm stops on first matching date range.', 'conditional-shipping-for-woocommerce' ),
 						'<code>;</code>', '<code>from1-to1;from2-to2;...</code>' ),
 					sprintf( __( 'Dates can be set in any format parsed by the PHP %s function.', 'conditional-shipping-for-woocommerce' ),
 						'<a target="_blank" href="https://www.php.net/manual/en/function.strtotime.php"><code>strtotime()</code></a>' ),
@@ -173,7 +208,7 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 						'<code>' . date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ) . '</code>' ),
 				);
 				$note_icon = '<span class="dashicons dashicons-info"></span> ';
-				$notes     = '<p>' . $note_icon    . implode( '</p><p>' . $note_icon, $notes ) . '</p>';
+				$notes = '<p>' . $note_icon    . implode( '</p><p>' . $note_icon, $notes ) . '</p>';
 				return $notes;
 
 		}
@@ -183,12 +218,12 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	/**
 	 * get_field.
 	 *
-	 * @version 1.5.1
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) `date_time`: desc: apply `strtotime()` to the current value (i.e. so user could see the parsed time right away)
+	 * @todo    (dev) `date_time`: desc: apply `strtotime()` to the current value (i.e., so user could see the parsed time right away)
 	 */
-	function get_field( $field ) {
+	function get_field( $field, $data = array() ) {
 		switch ( $this->id ) {
 
 			case 'order_amount':
@@ -219,12 +254,29 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 				);
 				break;
 
+			case 'product':
+				$return = array(
+					'type'              => 'multiselect',
+					'class'             => 'wc-product-search',
+					'options'           => $this->get_field_options( $data ),
+					'default'           => array(),
+					'custom_attributes' => array(
+						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'woocommerce' ),
+						'data-allow_clear' => 'true',
+						'data-action'      => ( alg_wc_cond_shipping()->core->do_add_variations ?
+							'woocommerce_json_search_products_and_variations' :
+							'woocommerce_json_search_products'
+						),
+					),
+				);
+				break;
+
 			default:
 				$return = array(
 					'type'     => 'multiselect',
 					'class'    => 'chosen_select',
 					'options'  => $this->get_field_options(),
-					'default'  => '',
+					'default'  => array(),
 				);
 
 		}
@@ -234,12 +286,13 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 	/**
 	 * get_field_options.
 	 *
-	 * @version 1.5.0
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) `product`: ajax
+	 * @todo    (dev) `user_id`, etc.: ajax?
+	 * @todo    (dev) `product`: `get_option( "wpjup_wc_cond_shipping_{$data['condition']}_method", array() )`: better solution?
 	 */
-	function get_field_options() {
+	function get_field_options( $data = array() ) {
 
 		if ( isset( $this->cached_options ) ) {
 			return $this->cached_options;
@@ -249,11 +302,18 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 
 			case 'user_role':
 				global $wp_roles;
-				$all_roles = array_merge( array(
-					'guest' => array(
-						'name'         => __( 'Guest', 'conditional-shipping-for-woocommerce' ),
-						'capabilities' => array(),
-					) ), apply_filters( 'editable_roles', ( isset( $wp_roles ) && is_object( $wp_roles ) ? $wp_roles->roles : array() ) ) );
+				$all_roles = array_merge(
+					array(
+						'guest' => array(
+							'name'         => __( 'Guest', 'conditional-shipping-for-woocommerce' ),
+							'capabilities' => array(),
+						)
+					),
+					apply_filters( 'editable_roles',
+						( isset( $wp_roles ) && is_object( $wp_roles ) ?
+							$wp_roles->roles : array() )
+					)
+				);
 				$return = wp_list_pluck( $all_roles, 'name' );
 				break;
 
@@ -269,7 +329,7 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 				$membership_plans = array();
 				$block_size       = 1024;
 				$offset           = 0;
-				while( true ) {
+				while ( true ) {
 					$args = array(
 						'post_type'      => 'wc_membership_plan',
 						'post_status'    => 'any',
@@ -303,38 +363,23 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 				break;
 
 			case 'product':
-				$products    = array();
-				$post_status = 'any';
-				$block_size  = 1024;
-				$offset      = 0;
-				while( true ) {
-					$args = array(
-						'post_type'      => 'product',
-						'post_status'    => $post_status,
-						'posts_per_page' => $block_size,
-						'offset'         => $offset,
-						'orderby'        => 'title',
-						'order'          => 'ASC',
-						'fields'         => 'ids',
-					);
-					$loop = new WP_Query( $args );
-					if ( ! $loop->have_posts() ) {
-						break;
-					}
-					foreach ( $loop->posts as $post_id ) {
-						$products[ $post_id ] = get_the_title( $post_id ) . ' (ID:' . $post_id . ')';
-						if ( alg_wc_cond_shipping()->core->do_add_variations ) {
-							$_product = wc_get_product( $post_id );
-							if ( $_product->is_type( 'variable' ) ) {
-								foreach ( $_product->get_children() as $child_id ) {
-									$products[ $child_id ] = get_the_title( $child_id ) . ' (ID:' . $child_id . ')';
-								}
-							}
+				$return = array();
+				if (
+					! empty( $data['condition'] ) &&
+					! empty( $data['method_id'] )
+				) {
+					if (
+						( $values = get_option( "wpjup_wc_cond_shipping_{$data['condition']}_method", array() ) ) &&
+						! empty( $values[ $data['method_id'] ] ) &&
+						is_array( $values[ $data['method_id'] ] )
+					) {
+						foreach ( $values[ $data['method_id'] ] as $product_id ) {
+							$return[ $product_id ] = ( ( $product = wc_get_product( $product_id ) ) ?
+								wp_strip_all_tags( $product->get_formatted_name() ) :
+								sprintf( __( 'Product #%d', 'conditional-shipping-for-woocommerce' ), $product_id ) );
 						}
 					}
-					$offset += $block_size;
 				}
-				$return = $products;
 				break;
 
 			case 'product_cat':
@@ -372,7 +417,9 @@ class Alg_WC_Conditional_Shipping_Settings_Condition extends Alg_WC_Conditional_
 				break;
 
 		}
-		$this->cached_options = $return;
+		if ( empty( $data ) ) {
+			$this->cached_options = $return;
+		}
 		return $return;
 	}
 

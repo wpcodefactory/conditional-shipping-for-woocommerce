@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 
+	// Order Amount
 	'order_amount' => array(
 		'title'      => __( 'Order Amount', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -20,6 +21,7 @@ return array(
 		),
 	),
 
+	// Cities
 	'city' => array(
 		'title'      => __( 'Cities', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -28,6 +30,7 @@ return array(
 		),
 	),
 
+	// User Roles
 	'user_role' => array(
 		'title'      => __( 'User Roles', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -36,6 +39,7 @@ return array(
 		),
 	),
 
+	// Users
 	'user_id' => array(
 		'title'      => __( 'Users', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -44,6 +48,7 @@ return array(
 		),
 	),
 
+	// User Memberships
 	'user_membership' => array(
 		'title'      => __( 'User Memberships', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -52,6 +57,7 @@ return array(
 		),
 	),
 
+	// Payment Gateways
 	'payment_gateways' => array(
 		'title'      => __( 'Payment Gateways', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -60,6 +66,7 @@ return array(
 		),
 	),
 
+	// Products
 	'product' => array(
 		'title'      => __( 'Products', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -68,6 +75,7 @@ return array(
 		),
 	),
 
+	// Product Categories
 	'product_cat' => array(
 		'title'      => __( 'Product Categories', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -76,6 +84,7 @@ return array(
 		),
 	),
 
+	// Product Tags
 	'product_tag' => array(
 		'title'      => __( 'Product Tags', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -84,6 +93,7 @@ return array(
 		),
 	),
 
+	// Product Shipping Classes
 	'product_shipping_class' => array(
 		'title'      => __( 'Product Shipping Classes', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(
@@ -92,6 +102,7 @@ return array(
 		),
 	),
 
+	// Date/Time
 	'date_time' => array(
 		'title'      => __( 'Date/Time', 'conditional-shipping-for-woocommerce' ),
 		'conditions' => array(

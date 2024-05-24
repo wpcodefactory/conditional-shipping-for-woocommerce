@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 1.8.0
+ * @version 1.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -108,8 +108,8 @@ class Alg_WC_Conditional_Shipping_Core {
 	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [!] (feature) "Shipping by shipping", e.g., show flat rate only if free shipping is not available?
-	 * @todo    [!] (dev) debug: more logging, i.e., other conditions, not only "date/time"
+	 * @todo    (feature) "Shipping by shipping", e.g., show flat rate only if free shipping is not available?
+	 * @todo    (dev) debug: more logging, i.e., other conditions, not only "date/time"
 	 */
 	function __construct() {
 
@@ -198,7 +198,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * validate_shipping_method.
 	 *
-	 * @version 1.7.1
+	 * @version 1.9.0
 	 * @since   1.4.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/7.7.0/plugins/woocommerce/includes/class-wc-shipping-rate.php
@@ -210,19 +210,21 @@ class Alg_WC_Conditional_Shipping_Core {
 		switch ( $logical_operator ) {
 
 			case 'OR':
-				$do_show = true;
+				$do_show        = true;
+				$hide_condition = false;
 				foreach ( array_keys( $this->conditions ) as $condition ) {
 					if (
 						$this->is_condition_enabled( $condition ) &&
 						( $value = $this->get_condition_value( $condition, $rate ) ) && ! empty( $value ) &&
 						! $this->do_hide( $condition, $value, $package )
 					) {
-						return true;
+						return array( 'res' => true, 'hide_condition' => false );
 					} elseif ( $this->is_condition_enabled( $condition ) && ! empty( $value ) ) {
+						$hide_condition = $condition;
 						$do_show = false;
 					}
 				}
-				return $do_show;
+				return array( 'res' => $do_show, 'hide_condition' => $hide_condition );
 
 			default: // 'AND'
 				foreach ( array_keys( $this->conditions ) as $condition ) {
@@ -231,10 +233,10 @@ class Alg_WC_Conditional_Shipping_Core {
 						( $value = $this->get_condition_value( $condition, $rate ) ) && ! empty( $value ) &&
 						$this->do_hide( $condition, $value, $package )
 					) {
-						return false;
+						return array( 'res' => false, 'hide_condition' => $condition );
 					}
 				}
-				return true;
+				return array( 'res' => true, 'hide_condition' => false );
 
 		}
 
@@ -243,7 +245,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * get_condition_value.
 	 *
-	 * @version 1.3.0
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 */
 	function get_condition_value( $condition, $rate ) {
@@ -251,7 +253,7 @@ class Alg_WC_Conditional_Shipping_Core {
 			$this->condition_options[ $condition ] = get_option( "wpjup_wc_cond_shipping_{$condition}_method", array() );
 		}
 		$method_id = apply_filters( 'alg_wc_cond_shipping_method_id', $rate->method_id, $rate );
-		return ( isset( $this->condition_options[ $condition ][ $method_id ] ) ? $this->condition_options[ $condition ][ $method_id ] : '' );
+		return ( $this->condition_options[ $condition ][ $method_id ] ?? '' );
 	}
 
 	/**
@@ -273,61 +275,72 @@ class Alg_WC_Conditional_Shipping_Core {
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) Products: check for `isset( $item['variation_id'] )`, `isset( $item['product_id'] )` and `isset( $item['data'] )` before using it
-	 * @todo    (feature) Products: as comma separated list (e.g. for WPML)
+	 * @todo    (feature) Products: as comma separated list (e.g., for WPML)
 	 */
 	function do_hide( $condition, $value, $package ) {
 		switch ( $condition ) {
 
+			// Order Amount
 			case 'min_order_amount':
 				return ( $this->check_for_cart_data( $package ) && ( $total_cart_amount = $this->get_total_cart_amount( $package ) ) < $value && ! $this->is_equal( $total_cart_amount, $value ) );
 			case 'max_order_amount':
 				return ( $this->check_for_cart_data( $package ) && ( $total_cart_amount = $this->get_total_cart_amount( $package ) ) > $value && ! $this->is_equal( $total_cart_amount, $value ) );
 
+			// Cities
 			case 'city_incl':
 				return ( ! in_array( $this->get_customer_city(), array_map( 'strtoupper', array_map( 'trim', explode( PHP_EOL, $value ) ) ) ) );
 			case 'city_excl':
 				return (   in_array( $this->get_customer_city(), array_map( 'strtoupper', array_map( 'trim', explode( PHP_EOL, $value ) ) ) ) );
 
+			// User Roles
 			case 'user_role_incl':
 				return ( ! in_array( $this->get_customer_role(), $value ) );
 			case 'user_role_excl':
 				return (   in_array( $this->get_customer_role(), $value ) );
 
+			// Users
 			case 'user_id_incl':
 				return ( ! in_array( $this->get_customer_id(), $value ) );
 			case 'user_id_excl':
 				return (   in_array( $this->get_customer_id(), $value ) );
 
+			// User Memberships
 			case 'user_membership_incl':
 				return ( function_exists( 'wc_memberships_is_user_active_member' ) && ! $this->check_customer_membership_plan( $value ) );
 			case 'user_membership_excl':
 				return ( function_exists( 'wc_memberships_is_user_active_member' ) &&   $this->check_customer_membership_plan( $value ) );
 
+			// Payment Gateways
 			case 'payment_gateways_incl':
 				return ( ! in_array( $this->get_current_payment_gateway(), $value ) );
 			case 'payment_gateways_excl':
 				return (   in_array( $this->get_current_payment_gateway(), $value ) );
 
+			// Products
 			case 'product_incl':
 				return ( $this->check_for_cart_data( $package ) && ! $this->check_products( $value, $this->get_items( $package ), $this->validate_all_for_include ) );
 			case 'product_excl':
 				return ( $this->check_for_cart_data( $package ) &&   $this->check_products( $value, $this->get_items( $package ) ) );
 
+			// Product Categories
 			case 'product_cat_incl':
 				return ( $this->check_for_cart_data( $package ) && ! $this->check_taxonomy( $value, $this->get_items( $package ), 'product_cat', $this->validate_all_for_include ) );
 			case 'product_cat_excl':
 				return ( $this->check_for_cart_data( $package ) &&   $this->check_taxonomy( $value, $this->get_items( $package ), 'product_cat' ) );
 
+			// Product Tags
 			case 'product_tag_incl':
 				return ( $this->check_for_cart_data( $package ) && ! $this->check_taxonomy( $value, $this->get_items( $package ), 'product_tag', $this->validate_all_for_include ) );
 			case 'product_tag_excl':
 				return ( $this->check_for_cart_data( $package ) &&   $this->check_taxonomy( $value, $this->get_items( $package ), 'product_tag' ) );
 
+			// Product Shipping Classes
 			case 'product_shipping_class_incl':
 				return ( $this->check_for_cart_data( $package ) && ! $this->check_shipping_class( $value, $this->get_items( $package ), $this->validate_all_for_include ) );
 			case 'product_shipping_class_excl':
 				return ( $this->check_for_cart_data( $package ) &&   $this->check_shipping_class( $value, $this->get_items( $package ) ) );
 
+			// Date/Time
 			case 'date_time_incl':
 				return ! $this->check_date_time( $value );
 			case 'date_time_excl':
@@ -342,8 +355,8 @@ class Alg_WC_Conditional_Shipping_Core {
 	 * @version 1.4.0
 	 * @since   1.4.0
 	 *
-	 * @todo    [!] (dev) debug: shipping method title?
-	 * @todo    [!] (dev) optionally "require all" for `date_time_incl`
+	 * @todo    (dev) debug: shipping method title?
+	 * @todo    (dev) optionally "require all" for `date_time_incl`
 	 */
 	function check_date_time( $value ) {
 		$current_time = current_time( 'timestamp' );
@@ -585,7 +598,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) billing city, session, base city: make it optional || remove?
-	 * @todo    (dev) do we need `'' !== $_REQUEST[ $key ]` and `'' !== $customer[ $key ]` (i.e. '' vs `get_base_city`)?
+	 * @todo    (dev) do we need `'' !== $_REQUEST[ $key ]` and `'' !== $customer[ $key ]` (i.e., '' vs `get_base_city`)?
 	 */
 	function get_customer_city() {
 

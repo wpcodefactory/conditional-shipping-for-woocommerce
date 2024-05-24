@@ -1,146 +1,148 @@
-#: includes/alg-wc-cs-condition-sections.php:16
+#: includes/alg-wc-cs-condition-sections.php:17
 msgid "Order Amount"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:18
+#: includes/alg-wc-cs-condition-sections.php:19
 msgid "Minimum Order Amount"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:19
+#: includes/alg-wc-cs-condition-sections.php:20
 msgid "Maximum Order Amount"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:24
+#: includes/alg-wc-cs-condition-sections.php:26
 msgid "Cities"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:26
+#: includes/alg-wc-cs-condition-sections.php:28
 msgid "Require Cities"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:27
+#: includes/alg-wc-cs-condition-sections.php:29
 msgid "Exclude Cities"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:32
+#: includes/alg-wc-cs-condition-sections.php:35
 msgid "User Roles"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:34
+#: includes/alg-wc-cs-condition-sections.php:37
 msgid "Require User Roles"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:35
+#: includes/alg-wc-cs-condition-sections.php:38
 msgid "Exclude User Roles"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:40
+#: includes/alg-wc-cs-condition-sections.php:44
 msgid "Users"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:42
+#: includes/alg-wc-cs-condition-sections.php:46
 msgid "Require User IDs"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:43
+#: includes/alg-wc-cs-condition-sections.php:47
 msgid "Exclude User IDs"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:48
+#: includes/alg-wc-cs-condition-sections.php:53
 msgid "User Memberships"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:50
+#: includes/alg-wc-cs-condition-sections.php:55
 msgid "Require User Membership Plans"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:51
+#: includes/alg-wc-cs-condition-sections.php:56
 msgid "Exclude User Membership Plans"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:56
+#: includes/alg-wc-cs-condition-sections.php:62
 msgid "Payment Gateways"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:58
+#: includes/alg-wc-cs-condition-sections.php:64
 msgid "Require Payment Gateways"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:59
+#: includes/alg-wc-cs-condition-sections.php:65
 msgid "Exclude Payment Gateways"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:64
+#: includes/alg-wc-cs-condition-sections.php:71
 msgid "Products"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:66
+#: includes/alg-wc-cs-condition-sections.php:73
 msgid "Require Products"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:67
+#: includes/alg-wc-cs-condition-sections.php:74
 msgid "Exclude Products"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:72
+#: includes/alg-wc-cs-condition-sections.php:80
 msgid "Product Categories"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:74
+#: includes/alg-wc-cs-condition-sections.php:82
 msgid "Require Product Categories"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:75
+#: includes/alg-wc-cs-condition-sections.php:83
 msgid "Exclude Product Categories"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:80
+#: includes/alg-wc-cs-condition-sections.php:89
 msgid "Product Tags"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:82
+#: includes/alg-wc-cs-condition-sections.php:91
 msgid "Require Product Tags"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:83
+#: includes/alg-wc-cs-condition-sections.php:92
 msgid "Exclude Product Tags"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:88
+#: includes/alg-wc-cs-condition-sections.php:98
 msgid "Product Shipping Classes"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:90
+#: includes/alg-wc-cs-condition-sections.php:100
 msgid "Require Product Shipping Classes"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:91
+#: includes/alg-wc-cs-condition-sections.php:101
 msgid "Exclude Product Shipping Classes"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:96
+#: includes/alg-wc-cs-condition-sections.php:107
 msgid "Date/Time"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:98
+#: includes/alg-wc-cs-condition-sections.php:109
 msgid "Require Date/Time"
 msgstr ""
 
-#: includes/alg-wc-cs-condition-sections.php:99
+#: includes/alg-wc-cs-condition-sections.php:110
 msgid "Exclude Date/Time"
 msgstr ""
 
-#: includes/class-alg-wc-cs-core.php:357
+#: includes/class-alg-wc-cs-core.php:370
 #, php-format
 msgid "Date/time range: from %s to %s; current time: %s; result: %s"
 msgstr ""
 
-#: includes/class-alg-wc-cs-core.php:627
+#: includes/class-alg-wc-cs-core.php:640
 #, php-format
 msgid "Customer city: %s"
 msgstr ""
 
-#: includes/class-alg-wc-cs-hooks.php:75
+#: includes/class-alg-wc-cs-hooks.php:74
+#: includes/class-alg-wc-cs-hooks.php:132
+#: includes/settings/class-alg-wc-cs-settings-condition.php:124
 #: includes/settings/class-alg-wc-cs-settings-general.php:167
 msgid "%shipping_method% is not available."
 msgstr ""
@@ -153,110 +155,143 @@ msgstr ""
 msgid "Go Pro"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:81
+#: includes/settings/class-alg-wc-cs-settings-condition.php:85
 msgid "Enable condition"
 msgstr ""
 
+#: includes/settings/class-alg-wc-cs-settings-condition.php:112
+msgid "Additional notice"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:113
+#: includes/settings/class-alg-wc-cs-settings-general.php:135
+#: includes/settings/class-alg-wc-cs-settings-general.php:155
+#: includes/settings/class-alg-wc-cs-settings-general.php:172
+#: includes/settings/class-alg-wc-cs-settings-general.php:184
+msgid "Enable"
+msgstr ""
+
 #: includes/settings/class-alg-wc-cs-settings-condition.php:114
+msgid ""
+"In addition to hiding the shipping method, you can also add extra notice on "
+"the cart and checkout pages."
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:120
+#: includes/settings/class-alg-wc-cs-settings-general.php:162
+#, php-format
+msgid "Available placeholder(s): %s"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:148
 #, php-format
 msgid "Enable shipping method only before 3:00 PM each day: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:116
+#: includes/settings/class-alg-wc-cs-settings-condition.php:150
 #, php-format
 msgid ""
 "Enable shipping method only before 3:00 PM each day, or before 5:00 PM on "
 "Mondays: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:118
+#: includes/settings/class-alg-wc-cs-settings-condition.php:152
 #, php-format
 msgid "Enable shipping method for the summer months only: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:120
+#: includes/settings/class-alg-wc-cs-settings-condition.php:154
 #, php-format
 msgid "Enable shipping method for the February only: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:125
-#: includes/settings/class-alg-wc-cs-settings-condition.php:140
+#: includes/settings/class-alg-wc-cs-settings-condition.php:159
+#: includes/settings/class-alg-wc-cs-settings-condition.php:174
 msgid "Examples"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:129
+#: includes/settings/class-alg-wc-cs-settings-condition.php:163
 #, php-format
 msgid "Disable shipping method each day after 4:00 PM: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:131
+#: includes/settings/class-alg-wc-cs-settings-condition.php:165
 #, php-format
 msgid ""
 "Disable shipping method each day after 4:00 PM, and for the whole day on "
 "weekends: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:133
+#: includes/settings/class-alg-wc-cs-settings-condition.php:167
 #, php-format
 msgid "Disable shipping method for the summer months: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:135
+#: includes/settings/class-alg-wc-cs-settings-condition.php:169
 #, php-format
 msgid "Disable shipping method for the February: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:159
+#: includes/settings/class-alg-wc-cs-settings-condition.php:194
 #, php-format
 msgid ""
 "This section requires <a target=\"_blank\" href=\"%s\">WooCommerce "
 "Memberships</a> plugin."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:164
+#: includes/settings/class-alg-wc-cs-settings-condition.php:199
 #, php-format
 msgid ""
-"Options must be set as date range(s) in %s format, i.e. dates must be "
+"Options must be set as date range(s) in %s format, i.e., dates must be "
 "separated with the hyphen %s symbol."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:166
+#: includes/settings/class-alg-wc-cs-settings-condition.php:201
 #, php-format
 msgid ""
-"You can add multiple date ranges separated by the semicolon %s symbol, i.e. "
+"You can add multiple date ranges separated by the semicolon %s symbol, i.e., "
 "%s. Algorithm stops on first matching date range."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:168
+#: includes/settings/class-alg-wc-cs-settings-condition.php:203
 #, php-format
 msgid "Dates can be set in any format parsed by the PHP %s function."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:170
+#: includes/settings/class-alg-wc-cs-settings-condition.php:205
 #, php-format
 msgid ""
 "%s date must always be smaller than %s date. E.g., %s is <strong>not "
 "correct</strong>; you need to use %s instead."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:172
+#: includes/settings/class-alg-wc-cs-settings-condition.php:207
 #, php-format
 msgid "Current date: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:196
+#: includes/settings/class-alg-wc-cs-settings-condition.php:231
 msgid "Ignored if set to zero."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:207
+#: includes/settings/class-alg-wc-cs-settings-condition.php:242
 msgid "Enter cities, one per line."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:254
+#: includes/settings/class-alg-wc-cs-settings-condition.php:264
+msgid "Search for a product&hellip;"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:308
 msgid "Guest"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-condition.php:367
+#: includes/settings/class-alg-wc-cs-settings-condition.php:379
+#, php-format
+msgid "Product #%d"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:412
 msgid "No shipping class"
 msgstr ""
 
@@ -291,46 +326,46 @@ msgid "General Options"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:99
-msgid "Add products variations"
-msgstr ""
-
-#: includes/settings/class-alg-wc-cs-settings-general.php:100
-msgid ""
-"Enable this if you want to add products variations to the products list."
-msgstr ""
-
-#: includes/settings/class-alg-wc-cs-settings-general.php:105
-msgid "Add"
-msgstr ""
-
-#: includes/settings/class-alg-wc-cs-settings-general.php:111
 msgid "Logical operator"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:112
+#: includes/settings/class-alg-wc-cs-settings-general.php:100
 #, php-format
 msgid ""
 "Logical operator used when multiple conditions are enabled, for example: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:114
+#: includes/settings/class-alg-wc-cs-settings-general.php:102
 msgid ""
 "Enable free shipping if an order is over a certain amount AND if a product "
 "is in a \"Free\" shipping class."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:115
+#: includes/settings/class-alg-wc-cs-settings-general.php:103
 msgid ""
 "Enable free shipping if an order is over a certain amount OR if a product is "
 "in a \"Free\" shipping class."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:122
+#: includes/settings/class-alg-wc-cs-settings-general.php:110
 msgid "AND"
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:123
+#: includes/settings/class-alg-wc-cs-settings-general.php:111
 msgid "OR"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-general.php:115
+msgid "Add products variations"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-general.php:116
+msgid ""
+"Enable this if you want to add products variations to the products list."
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-general.php:121
+msgid "Add"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:127
@@ -343,13 +378,6 @@ msgid ""
 "least one)."
 msgstr ""
 
-#: includes/settings/class-alg-wc-cs-settings-general.php:135
-#: includes/settings/class-alg-wc-cs-settings-general.php:155
-#: includes/settings/class-alg-wc-cs-settings-general.php:172
-#: includes/settings/class-alg-wc-cs-settings-general.php:184
-msgid "Enable"
-msgstr ""
-
 #: includes/settings/class-alg-wc-cs-settings-general.php:141
 msgid "Cart instead of package"
 msgstr ""
@@ -360,11 +388,6 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:161
 msgid "Checkout notice"
-msgstr ""
-
-#: includes/settings/class-alg-wc-cs-settings-general.php:162
-#, php-format
-msgid "Available placeholder(s): %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:163

@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - General Section Settings
  *
- * @version 1.7.0
+ * @version 1.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -55,11 +55,11 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.7.0
+	 * @version 1.9.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) `wpjup_wc_cond_shipping_cart_not_package`: remove it (i.e., always use packages, not cart)
-	 * @todo    (dev) Available Conditions: link to each condition separately, e.g. `admin_url( 'admin.php?page=wc-settings&tab=alg_wc_cond_shipping&section=' . $section_id . '#' . 'wpjup_wc_cond_shipping_' . $condition_id . '_enabled' )`
+	 * @todo    (dev) `wpjup_wc_cond_shipping_cart_not_package`: remove the option (i.e., always use packages, not cart)
+	 * @todo    (dev) Available Conditions: link to each condition separately, e.g., `admin_url( 'admin.php?page=wc-settings&tab=alg_wc_cond_shipping&section=' . $section_id . '#' . 'wpjup_wc_cond_shipping_' . $condition_id . '_enabled' )`
 	 * @todo    (desc) Checkout notice: better desc?
 	 * @todo    (desc) Debug: better desc?
 	 */
@@ -96,18 +96,6 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 				'id'       => 'alg_wc_cond_shipping_general_options',
 			),
 			array(
-				'title'    => __( 'Add products variations', 'conditional-shipping-for-woocommerce' ),
-				'desc_tip' => __( 'Enable this if you want to add products variations to the products list.', 'conditional-shipping-for-woocommerce' ) . '<br>' .
-					$this->get_affected_conditions_message( array(
-						$conditions['product_incl'],
-						$conditions['product_excl'],
-					) ),
-				'desc'     => __( 'Add', 'conditional-shipping-for-woocommerce' ),
-				'id'       => 'wpjup_wc_cond_shipping_add_variations',
-				'type'     => 'checkbox',
-				'default'  => 'yes',
-			),
-			array(
 				'title'    => __( 'Logical operator', 'conditional-shipping-for-woocommerce' ),
 				'desc'     => sprintf( __( 'Logical operator used when multiple conditions are enabled, for example: %s', 'conditional-shipping-for-woocommerce' ),
 					sprintf( '<br><em>* %s</em><br><em>* %s</em>',
@@ -122,6 +110,18 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 					'and' => __( 'AND', 'conditional-shipping-for-woocommerce' ),
 					'or'  => __( 'OR', 'conditional-shipping-for-woocommerce' ),
 				),
+			),
+			array(
+				'title'    => __( 'Add products variations', 'conditional-shipping-for-woocommerce' ),
+				'desc_tip' => __( 'Enable this if you want to add products variations to the products list.', 'conditional-shipping-for-woocommerce' ) . '<br>' .
+					$this->get_affected_conditions_message( array(
+						$conditions['product_incl'],
+						$conditions['product_excl'],
+					) ),
+				'desc'     => __( 'Add', 'conditional-shipping-for-woocommerce' ),
+				'id'       => 'wpjup_wc_cond_shipping_add_variations',
+				'type'     => 'checkbox',
+				'default'  => 'yes',
 			),
 			array(
 				'title'    => __( 'Require all', 'conditional-shipping-for-woocommerce' ),
