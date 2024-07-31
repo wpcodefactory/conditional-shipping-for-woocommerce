@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, shipping, woocommerce shipping, conditional shipping, shipping method
 Requires at least: 4.4
-Tested up to: 6.5
-Stable tag: 1.9.0
+Tested up to: 6.6
+Stable tag: 1.9.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,10 @@ You can set these conditions for shipping methods:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Conditional Shipping".
 
 == Changelog ==
+
+= 1.9.1 - 31/07/2024 =
+* WC tested up to: 9.1.
+* Tested up to: 6.6.
 
 = 1.9.0 - 24/05/2024 =
 * Dev - "Additional notice" options added (to all conditions).
