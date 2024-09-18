@@ -1,40 +1,3 @@
-# Copyright (C) 2024 WPFactory
-# This file is distributed under the same license as the WPFactory Conditional Shipping for WooCommerce Pro plugin.
-msgid ""
-msgstr ""
-"Project-Id-Version: conditional-shipping-for-woocommerce 1.9.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/conditional-shipping-for-woocommerce\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-31T08:34:01+02:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
-"X-Domain: conditional-shipping-for-woocommerce\n"
-
-#. Plugin Name of the plugin
-msgid "WPFactory Conditional Shipping for WooCommerce Pro"
-msgstr ""
-
-#. Plugin URI of the plugin
-msgid "https://wpfactory.com/item/conditional-shipping-for-woocommerce/"
-msgstr ""
-
-#. Description of the plugin
-#: includes/settings/class-alg-wc-cs-settings-general.php:81
-msgid "Set conditions for WooCommerce shipping methods to show up."
-msgstr ""
-
-#. Author of the plugin
-msgid "WPFactory"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://wpfactory.com"
-msgstr ""
-
 #: includes/alg-wc-cs-condition-sections.php:17
 msgid "Order Amount"
 msgstr ""
@@ -168,10 +131,12 @@ msgid "Exclude Date/Time"
 msgstr ""
 
 #: includes/class-alg-wc-cs-core.php:370
+#, php-format
 msgid "Date/time range: from %s to %s; current time: %s; result: %s"
 msgstr ""
 
-#: includes/class-alg-wc-cs-core.php:640
+#: includes/class-alg-wc-cs-core.php:642
+#, php-format
 msgid "Customer city: %s"
 msgstr ""
 
@@ -180,6 +145,10 @@ msgstr ""
 #: includes/settings/class-alg-wc-cs-settings-condition.php:124
 #: includes/settings/class-alg-wc-cs-settings-general.php:167
 msgid "%shipping_method% is not available."
+msgstr ""
+
+#: includes/class-alg-wc-cs.php:160
+msgid "Settings"
 msgstr ""
 
 #: includes/class-alg-wc-cs.php:163
@@ -203,27 +172,36 @@ msgid "Enable"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:114
-msgid "In addition to hiding the shipping method, you can also add extra notice on the cart and checkout pages."
+msgid ""
+"In addition to hiding the shipping method, you can also add extra notice on "
+"the cart and checkout pages."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:120
 #: includes/settings/class-alg-wc-cs-settings-general.php:162
+#, php-format
 msgid "Available placeholder(s): %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:148
+#, php-format
 msgid "Enable shipping method only before 3:00 PM each day: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:150
-msgid "Enable shipping method only before 3:00 PM each day, or before 5:00 PM on Mondays: %s"
+#, php-format
+msgid ""
+"Enable shipping method only before 3:00 PM each day, or before 5:00 PM on "
+"Mondays: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:152
+#, php-format
 msgid "Enable shipping method for the summer months only: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:154
+#, php-format
 msgid "Enable shipping method for the February only: %s"
 msgstr ""
 
@@ -233,42 +211,62 @@ msgid "Examples"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:163
+#, php-format
 msgid "Disable shipping method each day after 4:00 PM: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:165
-msgid "Disable shipping method each day after 4:00 PM, and for the whole day on weekends: %s"
+#, php-format
+msgid ""
+"Disable shipping method each day after 4:00 PM, and for the whole day on "
+"weekends: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:167
+#, php-format
 msgid "Disable shipping method for the summer months: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:169
+#, php-format
 msgid "Disable shipping method for the February: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:194
-msgid "This section requires <a target=\"_blank\" href=\"%s\">WooCommerce Memberships</a> plugin."
+#, php-format
+msgid ""
+"This section requires <a target=\"_blank\" href=\"%s\">WooCommerce "
+"Memberships</a> plugin."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:199
-msgid "Options must be set as date range(s) in %s format, i.e., dates must be separated with the hyphen %s symbol."
+#, php-format
+msgid ""
+"Options must be set as date range(s) in %s format, i.e., dates must be "
+"separated with the hyphen %s symbol."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:201
-msgid "You can add multiple date ranges separated by the semicolon %s symbol, i.e., %s. Algorithm stops on first matching date range."
+#, php-format
+msgid ""
+"You can add multiple date ranges separated by the semicolon %s symbol, i.e., "
+"%s. Algorithm stops on first matching date range."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:203
+#, php-format
 msgid "Dates can be set in any format parsed by the PHP %s function."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:205
-msgid "%s date must always be smaller than %s date. E.g., %s is <strong>not correct</strong>; you need to use %s instead."
+#, php-format
+msgid ""
+"%s date must always be smaller than %s date. E.g., %s is <strong>not "
+"correct</strong>; you need to use %s instead."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:207
+#, php-format
 msgid "Current date: %s"
 msgstr ""
 
@@ -280,12 +278,21 @@ msgstr ""
 msgid "Enter cities, one per line."
 msgstr ""
 
+#: includes/settings/class-alg-wc-cs-settings-condition.php:264
+msgid "Search for a product&hellip;"
+msgstr ""
+
 #: includes/settings/class-alg-wc-cs-settings-condition.php:308
 msgid "Guest"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:379
+#, php-format
 msgid "Product #%d"
+msgstr ""
+
+#: includes/settings/class-alg-wc-cs-settings-condition.php:412
+msgid "No shipping class"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:25
@@ -293,6 +300,7 @@ msgid "General"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:38
+#, php-format
 msgid "This option affects only these conditions: %s."
 msgstr ""
 
@@ -309,6 +317,10 @@ msgstr ""
 msgid "Enable plugin"
 msgstr ""
 
+#: includes/settings/class-alg-wc-cs-settings-general.php:81
+msgid "Set conditions for WooCommerce shipping methods to show up."
+msgstr ""
+
 #: includes/settings/class-alg-wc-cs-settings-general.php:94
 msgid "General Options"
 msgstr ""
@@ -318,15 +330,21 @@ msgid "Logical operator"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:100
-msgid "Logical operator used when multiple conditions are enabled, for example: %s"
+#, php-format
+msgid ""
+"Logical operator used when multiple conditions are enabled, for example: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:102
-msgid "Enable free shipping if an order is over a certain amount AND if a product is in a \"Free\" shipping class."
+msgid ""
+"Enable free shipping if an order is over a certain amount AND if a product "
+"is in a \"Free\" shipping class."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:103
-msgid "Enable free shipping if an order is over a certain amount OR if a product is in a \"Free\" shipping class."
+msgid ""
+"Enable free shipping if an order is over a certain amount OR if a product is "
+"in a \"Free\" shipping class."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:110
@@ -342,7 +360,8 @@ msgid "Add products variations"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:116
-msgid "Enable this if you want to add products variations to the products list."
+msgid ""
+"Enable this if you want to add products variations to the products list."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:121
@@ -354,7 +373,9 @@ msgid "Require all"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:128
-msgid "Enable this if you want all products in cart to be valid (instead of at least one)."
+msgid ""
+"Enable this if you want all products in cart to be valid (instead of at "
+"least one)."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:141
@@ -370,11 +391,16 @@ msgid "Checkout notice"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:163
-msgid "This will be displayed if customer will select the shipping method which became unavailable during the checkout process."
+msgid ""
+"This will be displayed if customer will select the shipping method which "
+"became unavailable during the checkout process."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:164
-msgid "For example, when using \"Require/Exclude Date/Time\" sections, shipping method availability may change because of the time passed since the checkout page was (re)loaded."
+msgid ""
+"For example, when using \"Require/Exclude Date/Time\" sections, shipping "
+"method availability may change because of the time passed since the checkout "
+"page was (re)loaded."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:171
@@ -382,11 +408,15 @@ msgid "Use shipping instances"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:173
-msgid "Enable this if you want to use shipping methods instances instead of shipping methods."
+msgid ""
+"Enable this if you want to use shipping methods instances instead of "
+"shipping methods."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:174
-msgid "For example if you want to set different conditions for different \"Flat rate\" method instances in different or same shipping zones."
+msgid ""
+"For example if you want to set different conditions for different \"Flat rate"
+"\" method instances in different or same shipping zones."
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:183
@@ -394,6 +424,7 @@ msgid "Debug"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:185
+#, php-format
 msgid "Will add a log to %s."
 msgstr ""
 
@@ -402,6 +433,7 @@ msgid "WooCommerce > Status > Logs"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:187
+#, php-format
 msgid "Currently this option affects only these conditions: %s."
 msgstr ""
 

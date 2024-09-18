@@ -3,12 +3,12 @@
 Plugin Name: WPFactory Conditional Shipping for WooCommerce
 Plugin URI: https://wpfactory.com/item/conditional-shipping-for-woocommerce/
 Description: Set conditions for WooCommerce shipping methods to show up.
-Version: 1.9.1
+Version: 1.9.2
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: conditional-shipping-for-woocommerce
 Domain Path: /langs
-WC tested up to: 9.1
+WC tested up to: 9.3
 Requires Plugins: woocommerce
 */
 
@@ -31,7 +31,7 @@ if ( 'conditional-shipping-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
-defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '1.9.1' );
+defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '1.9.2' );
 
 defined( 'ALG_WC_CONDITIONAL_SHIPPING_FILE' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_FILE', __FILE__ );
 

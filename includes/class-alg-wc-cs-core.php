@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 1.9.0
+ * @version 1.9.2
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -418,7 +418,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * check_products.
 	 *
-	 * @version 1.0.0
+	 * @version 1.9.2
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) if needed, prepare `$products_variations` earlier (and only once)
@@ -428,7 +428,9 @@ class Alg_WC_Conditional_Shipping_Core {
 		if ( $this->do_add_variations ) {
 			$products_variations = array();
 			foreach ( $product_ids as $_product_id ) {
-				$_product = wc_get_product( $_product_id );
+				if ( ! ( $_product = wc_get_product( $_product_id ) ) ) {
+					continue;
+				}
 				if ( $_product->is_type( 'variable' ) ) {
 					$products_variations = array_merge( $products_variations, $_product->get_children() );
 				} else {
