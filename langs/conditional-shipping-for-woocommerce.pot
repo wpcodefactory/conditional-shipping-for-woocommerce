@@ -147,12 +147,18 @@ msgstr ""
 msgid "%shipping_method% is not available."
 msgstr ""
 
-#: includes/class-alg-wc-cs.php:160
+#: includes/class-alg-wc-cs.php:182
 msgid "Settings"
 msgstr ""
 
-#: includes/class-alg-wc-cs.php:163
+#: includes/class-alg-wc-cs.php:186
 msgid "Go Pro"
+msgstr ""
+
+#: includes/class-alg-wc-cs.php:230 includes/class-alg-wc-cs.php:231
+#: includes/settings/class-alg-wc-cs-settings-general.php:79
+#: includes/settings/class-alg-wc-cs-settings.php:27
+msgid "Conditional Shipping"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-condition.php:85
@@ -306,11 +312,6 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:74
 msgid "Conditional Shipping Options"
-msgstr ""
-
-#: includes/settings/class-alg-wc-cs-settings-general.php:79
-#: includes/settings/class-alg-wc-cs-settings.php:27
-msgid "Conditional Shipping"
 msgstr ""
 
 #: includes/settings/class-alg-wc-cs-settings-general.php:80
