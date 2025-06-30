@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - General Section Settings
  *
- * @version 1.9.0
+ * @version 2.1.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -35,13 +35,17 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 	 * @todo    (dev) add links to sections
 	 */
 	function get_affected_conditions_message( $conditions ) {
-		return sprintf( __( 'This option affects only these conditions: %s.', 'conditional-shipping-for-woocommerce' ), '"' . implode( '", "', $conditions ) . '"' );
+		return sprintf(
+			/* Translators: %s: Condition list. */
+			__( 'This option affects only these conditions: %s.', 'conditional-shipping-for-woocommerce' ),
+			'"' . implode( '", "', $conditions ) . '"'
+		);
 	}
 
 	/**
 	 * add_style.
 	 *
-	 * @version 1.5.0
+	 * @version 2.1.0
 	 * @since   1.5.0
 	 */
 	function add_style() {
@@ -49,7 +53,7 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 		foreach ( alg_wc_cond_shipping()->core->conditions as $condition_id => $condition_desc ) {
 			$ids[] = '.form-table td fieldset label[for=wpjup_wc_cond_shipping_' . $condition_id . '_enabled]';
 		}
-		echo '<style> ' . implode( ', ', $ids ) . ' { margin-top: 0 !important; margin-bottom: 0 !important; line-height: 1 !important; } </style>';
+		echo '<style> ' . wp_kses_post( implode( ', ', $ids ) ) . ' { margin-top: 0 !important; margin-bottom: 0 !important; line-height: 1 !important; } </style>';
 	}
 
 	/**
@@ -97,11 +101,15 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 			),
 			array(
 				'title'    => __( 'Logical operator', 'conditional-shipping-for-woocommerce' ),
-				'desc'     => sprintf( __( 'Logical operator used when multiple conditions are enabled, for example: %s', 'conditional-shipping-for-woocommerce' ),
-					sprintf( '<br><em>* %s</em><br><em>* %s</em>',
+				'desc'     => sprintf(
+					/* Translators: %s: Examples. */
+					__( 'Logical operator used when multiple conditions are enabled, for example: %s', 'conditional-shipping-for-woocommerce' ),
+					sprintf(
+						'<br><em>* %s</em><br><em>* %s</em>',
 						__( 'Enable free shipping if an order is over a certain amount AND if a product is in a "Free" shipping class.', 'conditional-shipping-for-woocommerce' ),
 						__( 'Enable free shipping if an order is over a certain amount OR if a product is in a "Free" shipping class.', 'conditional-shipping-for-woocommerce' )
-					) ),
+					)
+				),
 				'id'       => 'alg_wc_cond_shipping_logical_operator',
 				'type'     => 'select',
 				'class'    => 'chosen_select',
@@ -159,12 +167,16 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 			),
 			array(
 				'title'    => __( 'Checkout notice', 'conditional-shipping-for-woocommerce' ),
-				'desc'     => sprintf( __( 'Available placeholder(s): %s', 'conditional-shipping-for-woocommerce' ), '<code>%shipping_method%</code>' ),
+				'desc'     => sprintf(
+					/* Translators: %s: Placeholder list. */
+					__( 'Available placeholder(s): %s', 'conditional-shipping-for-woocommerce' ),
+					'<code>%shipping_method%</code>'
+				),
 				'desc_tip' => __( 'This will be displayed if customer will select the shipping method which became unavailable during the checkout process.', 'conditional-shipping-for-woocommerce' ) . ' ' .
 					__( 'For example, when using "Require/Exclude Date/Time" sections, shipping method availability may change because of the time passed since the checkout page was (re)loaded.', 'conditional-shipping-for-woocommerce' ),
 				'type'     => 'text',
 				'id'       => 'wpjup_wc_cond_shipping_checkout_notice',
-				'default'  => __( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ),
+				'default'  => __( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ), // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 				'css'      => 'width:100%;',
 			),
 			array(
@@ -172,8 +184,16 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 				'desc'     => __( 'Enable', 'conditional-shipping-for-woocommerce' ),
 				'desc_tip' => __( 'Enable this if you want to use shipping methods instances instead of shipping methods.', 'conditional-shipping-for-woocommerce' ) . ' ' .
 					__( 'For example if you want to set different conditions for different "Flat rate" method instances in different or same shipping zones.', 'conditional-shipping-for-woocommerce' ) .
-					apply_filters( 'alg_wc_cond_shipping_settings', '<br>' . sprintf( 'You will need %s plugin to enable this option.',
-						'<a target="_blank" href="https://wpfactory.com/item/conditional-shipping-for-woocommerce/">' . 'WPFactory Conditional Shipping for WooCommerce Pro' . '</a>' ) ),
+					apply_filters(
+						'alg_wc_cond_shipping_settings',
+						'<br>' . sprintf(
+							/* Translators: %s: Plugin link. */
+							'You will need %s plugin to enable this option.',
+							'<a target="_blank" href="https://wpfactory.com/item/conditional-shipping-for-woocommerce/">' .
+								'WPFactory Conditional Shipping for WooCommerce Pro' .
+							'</a>'
+						)
+					),
 				'type'     => 'checkbox',
 				'id'       => 'wpjup_wc_cond_shipping_use_instances',
 				'default'  => 'no',
@@ -182,16 +202,26 @@ class Alg_WC_Conditional_Shipping_Settings_General extends Alg_WC_Conditional_Sh
 			array(
 				'title'    => __( 'Debug', 'conditional-shipping-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'conditional-shipping-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'Will add a log to %s.', 'conditional-shipping-for-woocommerce' ),
-						'<a href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">' . __( 'WooCommerce > Status > Logs', 'conditional-shipping-for-woocommerce' ) . '</a>' ) . '<br>' .
-					sprintf( __( 'Currently this option affects only these conditions: %s.', 'conditional-shipping-for-woocommerce' ),
+				'desc_tip' => (
+					sprintf(
+						/* Translators: %s: Link. */
+						__( 'Will add a log to %s.', 'conditional-shipping-for-woocommerce' ),
+						'<a href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">' .
+							__( 'WooCommerce > Status > Logs', 'conditional-shipping-for-woocommerce' ) .
+						'</a>'
+					) .
+					'<br>' .
+					sprintf(
+						/* Translators: %s: Condition list. */
+						__( 'Currently this option affects only these conditions: %s.', 'conditional-shipping-for-woocommerce' ),
 						'"' . implode( '", "', array(
 							$conditions['city_incl'],
 							$conditions['city_excl'],
 							$conditions['date_time_incl'],
 							$conditions['date_time_excl'],
 						) ) . '"'
-					),
+					)
+				),
 				'type'     => 'checkbox',
 				'id'       => 'wpjup_wc_cond_shipping_debug',
 				'default'  => 'no',

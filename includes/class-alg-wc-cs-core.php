@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 1.9.2
+ * @version 2.1.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -105,7 +105,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.7.0
+	 * @version 2.1.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (feature) "Shipping by shipping", e.g., show flat rate only if free shipping is not available?
@@ -113,10 +113,10 @@ class Alg_WC_Conditional_Shipping_Core {
 	 */
 	function __construct() {
 
-		$this->init();
+		add_action( 'init', array( $this, 'init' ) );
 
 		if ( 'yes' === get_option( 'wpjup_wc_cond_shipping_plugin_enabled', 'yes' ) ) {
-			require_once( 'class-alg-wc-cs-hooks.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-cs-hooks.php';
 		}
 
 		do_action( 'alg_wc_cond_shipping_core_loaded', $this );
@@ -126,14 +126,14 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * get_condition_sections.
 	 *
-	 * @version 1.7.0
+	 * @version 2.1.0
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) merge this with `$this->conditions`
 	 */
 	function get_condition_sections() {
 		if ( ! isset( $this->condition_sections ) ) {
-			$this->condition_sections = require_once( 'alg-wc-cs-condition-sections.php' );
+			$this->condition_sections = require_once plugin_dir_path( __FILE__ ) . 'alg-wc-cs-condition-sections.php';
 		}
 		return $this->condition_sections;
 	}
@@ -179,7 +179,11 @@ class Alg_WC_Conditional_Shipping_Core {
 	 */
 	function add_to_log( $message ) {
 		if ( function_exists( 'wc_get_logger' ) && ( $log = wc_get_logger() ) ) {
-			$log->log( 'info', $message, array( 'source' => 'conditional-shipping-for-woocommerce' ) );
+			$log->log(
+				'info',
+				$message,
+				array( 'source' => 'conditional-shipping-for-woocommerce' )
+			);
 		}
 	}
 
@@ -352,7 +356,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * check_date_time.
 	 *
-	 * @version 1.4.0
+	 * @version 2.1.0
 	 * @since   1.4.0
 	 *
 	 * @todo    (dev) debug: shipping method title?
@@ -367,8 +371,16 @@ class Alg_WC_Conditional_Shipping_Core {
 				$start_time  = strtotime( $_value[0], $current_time );
 				$end_time    = strtotime( $_value[1], $current_time );
 				$is_in_range = ( $current_time >= $start_time && $current_time <= $end_time );
-				$this->debug( sprintf( __( 'Date/time range: from %s to %s; current time: %s; result: %s', 'conditional-shipping-for-woocommerce' ),
-					date( 'Y-m-d H:i:s', $start_time ), date( 'Y-m-d H:i:s', $end_time ), date( 'Y-m-d H:i:s', $current_time ), ( $is_in_range ? 'yes' : 'no' ) ) );
+				$this->debug(
+					sprintf(
+						/* Translators: %1$s: Date and time, %2$s: Date and time, %3$s: Date and time, %4$s: Result (yes or no). */
+						__( 'Date/time range: from %1$s to %2$s; current time: %3$s; result: %4$s', 'conditional-shipping-for-woocommerce' ),
+						date( 'Y-m-d H:i:s', $start_time ),   // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						date( 'Y-m-d H:i:s', $end_time ),     // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						date( 'Y-m-d H:i:s', $current_time ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						( $is_in_range ? 'yes' : 'no' )
+					)
+				);
 				if ( $is_in_range ) {
 					return true;
 				}
@@ -390,10 +402,10 @@ class Alg_WC_Conditional_Shipping_Core {
 			// Session
 			return WC()->session->chosen_payment_method;
 
-		} elseif ( ! empty( $_REQUEST['payment_method'] ) ) {
+		} elseif ( ! empty( $_REQUEST['payment_method'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			// Submitted data
-			return sanitize_key( $_REQUEST['payment_method'] );
+			return sanitize_key( $_REQUEST['payment_method'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		} elseif ( '' != ( $default_gateway = get_option( 'woocommerce_default_gateway' ) ) ) {
 
@@ -442,9 +454,15 @@ class Alg_WC_Conditional_Shipping_Core {
 
 		foreach ( $items as $item ) {
 			$_product_id = ( $this->do_add_variations && 0 != $item['variation_id'] ? $item['variation_id'] : $item['product_id'] );
-			if ( $validate_all_for_include && ! in_array( $_product_id, $product_ids ) ) {
+			if (
+				$validate_all_for_include &&
+				! in_array( $_product_id, $product_ids )
+			) {
 				return false;
-			} elseif ( ! $validate_all_for_include && in_array( $_product_id, $product_ids ) ) {
+			} elseif (
+				! $validate_all_for_include &&
+				in_array( $_product_id, $product_ids )
+			) {
 				return true;
 			}
 		}
@@ -472,9 +490,15 @@ class Alg_WC_Conditional_Shipping_Core {
 			}
 
 			foreach( $product_terms as $product_term ) {
-				if ( $validate_all_for_include && ! in_array( $product_term->term_id, $product_ids ) ) {
+				if (
+					$validate_all_for_include &&
+					! in_array( $product_term->term_id, $product_ids )
+				) {
 					return false;
-				} elseif ( ! $validate_all_for_include && in_array( $product_term->term_id, $product_ids ) ) {
+				} elseif (
+					! $validate_all_for_include &&
+					in_array( $product_term->term_id, $product_ids )
+				) {
 					return true;
 				}
 			}
@@ -497,9 +521,15 @@ class Alg_WC_Conditional_Shipping_Core {
 		foreach ( $items as $item ) {
 			$product = $item['data'];
 			$product_shipping_class = $product->get_shipping_class_id();
-			if ( $validate_all_for_include && ! in_array( $product_shipping_class, $product_ids ) ) {
+			if (
+				$validate_all_for_include &&
+				! in_array( $product_shipping_class, $product_ids )
+			) {
 				return false;
-			} elseif ( ! $validate_all_for_include && in_array( $product_shipping_class, $product_ids ) ) {
+			} elseif (
+				! $validate_all_for_include &&
+				in_array( $product_shipping_class, $product_ids )
+			) {
 				return true;
 			}
 		}
@@ -587,7 +617,15 @@ class Alg_WC_Conditional_Shipping_Core {
 	function get_customer_role() {
 		if ( ! isset( $this->customer_role ) ) {
 			$current_user = wp_get_current_user();
-			$first_role   = ( isset( $current_user->roles ) && is_array( $current_user->roles ) && ! empty( $current_user->roles ) ? reset( $current_user->roles ) : 'guest' );
+			$first_role   = (
+				(
+					isset( $current_user->roles ) &&
+					is_array( $current_user->roles ) &&
+					! empty( $current_user->roles )
+				) ?
+				reset( $current_user->roles ) :
+				'guest'
+			);
 			$this->customer_role = ( '' != $first_role ? $first_role : 'guest' );
 		}
 		return $this->customer_role;
@@ -596,7 +634,7 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * get_customer_city.
 	 *
-	 * @version 1.6.0
+	 * @version 2.1.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) billing city, session, base city: make it optional || remove?
@@ -610,8 +648,8 @@ class Alg_WC_Conditional_Shipping_Core {
 			// Try to get it from `$_REQUEST`
 			$keys = array( 's_city', 'shipping_city', 'city', 'billing_city' );
 			foreach ( $keys as $key ) {
-				if ( isset( $_REQUEST[ $key ] ) && '' !== $_REQUEST[ $key ] ) {
-					$this->customer_city = sanitize_text_field( $_REQUEST[ $key ] );
+				if ( isset( $_REQUEST[ $key ] ) && '' !== $_REQUEST[ $key ] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					$this->customer_city = sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					$source_for_debug = 'REQUEST[' . $key . ']';
 					break;
 				}
@@ -639,7 +677,13 @@ class Alg_WC_Conditional_Shipping_Core {
 			$this->customer_city = strtoupper( $this->customer_city );
 
 			// Debug
-			$this->debug( sprintf( __( 'Customer city: %s', 'conditional-shipping-for-woocommerce' ), $this->customer_city . ' (' . $source_for_debug . ')' ) );
+			$this->debug(
+				sprintf(
+					/* Translators: %s: City name. */
+					__( 'Customer city: %s', 'conditional-shipping-for-woocommerce' ),
+					$this->customer_city . ' (' . $source_for_debug . ')'
+				)
+			);
 
 		}
 

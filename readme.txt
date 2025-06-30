@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas
 Tags: woocommerce, shipping, woocommerce shipping, conditional shipping, shipping method
 Requires at least: 4.4
-Tested up to: 6.6
-Stable tag: 2.0.0
+Tested up to: 6.8
+Stable tag: 2.1.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,9 +46,24 @@ You can set these conditions for shipping methods:
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Start by visiting plugin settings at "WooCommerce > Settings > Conditional Shipping".
+3. Start by visiting plugin settings at "WPFactory > Conditional Shipping".
 
 == Changelog ==
+
+= 2.1.0 - 30/06/2025 =
+* Fix - Translation loading fixed.
+* Dev - Security - Output escaped.
+* Dev - Security - Input sanitized.
+* Dev - WPFactory Admin Menu - Library updated.
+* Dev - WPFactory Admin Menu - Moved to the `init` hook.
+* Dev - WPFactory Admin Menu - Icon added.
+* Dev - WPFactory Recommendations - Moved to the `init` hook.
+* Dev - WPFactory Key Manager - Library updated.
+* Dev - WPFactory Key Manager - Moved to the `init` hook.
+* Dev - Code refactoring.
+* Dev - Coding standards improved.
+* WC tested up to: 9.9.
+* Tested up to: 6.8.
 
 = 2.0.0 - 06/11/2024 =
 * Dev - Plugin settings moved to the "WPFactory" menu.

@@ -71,7 +71,7 @@ class Alg_WC_Conditional_Shipping_Hooks {
 
 				$notice = array_replace( array(
 					'enabled' => 'no',
-					'content' => __( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ),
+					'content' => __( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ), // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 				), get_option( 'wpjup_wc_cond_shipping_' . $rate_data['hide_condition'] . '_notice', array() ) );
 
 				if ( 'yes' === $notice['enabled'] ) {
@@ -129,7 +129,7 @@ class Alg_WC_Conditional_Shipping_Hooks {
 
 			if ( ! $validate['res'] ) {
 				$notice = get_option( 'wpjup_wc_cond_shipping_checkout_notice',
-					__( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ) );
+					__( '%shipping_method% is not available.', 'conditional-shipping-for-woocommerce' ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 				$notice = str_replace( '%shipping_method%', $rate->label, $notice );
 				wc_add_notice( $notice, 'error' );
 			}

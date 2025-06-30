@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Settings
  *
- * @version 1.5.0
+ * @version 2.1.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,22 +17,25 @@ class Alg_WC_Conditional_Shipping_Settings extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.5.0
+	 * @version 2.1.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) `width:100%;`?
 	 */
 	function __construct() {
+
 		$this->id    = 'alg_wc_cond_shipping';
 		$this->label = __( 'Conditional Shipping', 'conditional-shipping-for-woocommerce' );
 		parent::__construct();
+
 		// Sections
-		require_once( 'class-alg-wc-cs-settings-section.php' );
-		require_once( 'class-alg-wc-cs-settings-general.php' );
-		require_once( 'class-alg-wc-cs-settings-condition.php' );
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-cs-settings-section.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-cs-settings-general.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-cs-settings-condition.php';
 		foreach ( alg_wc_cond_shipping()->core->get_condition_sections() as $section_id => $section ) {
 			$section = new Alg_WC_Conditional_Shipping_Settings_Condition( $section_id, $section['title'], array_keys( $section['conditions'] ) );
 		}
+
 	}
 
 	/**
@@ -43,25 +46,28 @@ class Alg_WC_Conditional_Shipping_Settings extends WC_Settings_Page {
 	 */
 	function get_settings() {
 		global $current_section;
-		return array_merge( apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() ), array(
+		return array_merge(
+			apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() ),
 			array(
-				'title'     => __( 'Reset Settings', 'conditional-shipping-for-woocommerce' ),
-				'type'      => 'title',
-				'id'        => $this->id . '_' . $current_section . '_reset_options',
-			),
-			array(
-				'title'     => __( 'Reset section settings', 'conditional-shipping-for-woocommerce' ),
-				'desc'      => '<strong>' . __( 'Reset', 'conditional-shipping-for-woocommerce' ) . '</strong>',
-				'desc_tip'  => __( 'Check the box and save changes to reset.', 'conditional-shipping-for-woocommerce' ),
-				'id'        => $this->id . '_' . $current_section . '_reset',
-				'default'   => 'no',
-				'type'      => 'checkbox',
-			),
-			array(
-				'type'      => 'sectionend',
-				'id'        => $this->id . '_' . $current_section . '_reset_options',
-			),
-		) );
+				array(
+					'title'     => __( 'Reset Settings', 'conditional-shipping-for-woocommerce' ),
+					'type'      => 'title',
+					'id'        => $this->id . '_' . $current_section . '_reset_options',
+				),
+				array(
+					'title'     => __( 'Reset section settings', 'conditional-shipping-for-woocommerce' ),
+					'desc'      => '<strong>' . __( 'Reset', 'conditional-shipping-for-woocommerce' ) . '</strong>',
+					'desc_tip'  => __( 'Check the box and save changes to reset.', 'conditional-shipping-for-woocommerce' ),
+					'id'        => $this->id . '_' . $current_section . '_reset',
+					'default'   => 'no',
+					'type'      => 'checkbox',
+				),
+				array(
+					'type'      => 'sectionend',
+					'id'        => $this->id . '_' . $current_section . '_reset_options',
+				),
+			)
+		);
 	}
 
 	/**
@@ -86,12 +92,13 @@ class Alg_WC_Conditional_Shipping_Settings extends WC_Settings_Page {
 	/**
 	 * admin_notice_settings_reset.
 	 *
-	 * @version 1.0.0
+	 * @version 2.1.0
 	 * @since   1.0.0
 	 */
 	function admin_notice_settings_reset() {
 		echo '<div class="notice notice-warning is-dismissible"><p><strong>' .
-			__( 'Your settings have been reset.', 'conditional-shipping-for-woocommerce' ) . '</strong></p></div>';
+			esc_html__( 'Your settings have been reset.', 'conditional-shipping-for-woocommerce' ) .
+		'</strong></p></div>';
 	}
 
 	/**
