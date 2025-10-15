@@ -2,7 +2,7 @@
 /**
  * WPFactory Conditional Shipping for WooCommerce - Core Class
  *
- * @version 2.1.0
+ * @version 2.1.2
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,10 +17,10 @@ class Alg_WC_Conditional_Shipping_Core {
 	/**
 	 * conditions.
 	 *
-	 * @version 1.0.0
+	 * @version 2.1.2
 	 * @since   1.0.0
 	 */
-	public $conditions;
+	public $conditions = array();
 
 	/**
 	 * condition_options.
