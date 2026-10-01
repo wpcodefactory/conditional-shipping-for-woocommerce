@@ -1,46 +1,63 @@
 <?php
-/*
-Plugin Name: Conditional Shipping for WooCommerce: Restrict Shipping Options by Anything
-Plugin URI: https://wpfactory.com/item/conditional-shipping-for-woocommerce/
-Description: Set conditions for WooCommerce shipping methods to show up.
-Version: 2.1.3
-Author: WPFactory
-Author URI: https://wpfactory.com
-Requires at least: 4.4
-Text Domain: conditional-shipping-for-woocommerce
-Domain Path: /langs
-WC tested up to: 10.7
-Requires Plugins: woocommerce
-License: GNU General Public License v3.0
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
-*/
+/**
+ * Plugin Name: Conditional Shipping for WooCommerce: Restrict Shipping Options by Anything
+ * Plugin URI: https://wpfactory.com/item/conditional-shipping-for-woocommerce/
+ * Description: Set conditions for WooCommerce shipping methods to show up.
+ * Version: 2.2.0
+ * Author: WPFactory
+ * Author URI: https://wpfactory.com
+ * Requires at least: 4.4
+ * Text Domain: conditional-shipping-for-woocommerce
+ * Domain Path: /langs
+ * WC tested up to: 11.1
+ * Requires Plugins: woocommerce
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package WPFactory\WC_Conditional_Shipping
+ */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( 'conditional-shipping-for-woocommerce.php' === basename( __FILE__ ) ) {
-	/**
-	 * Check if Pro plugin version is activated.
-	 *
-	 * @version 1.7.4
-	 * @since   1.5.0
-	 */
-	$plugin = 'conditional-shipping-for-woocommerce-pro/conditional-shipping-for-woocommerce-pro.php';
-	if (
-		in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
-		(
-			is_multisite() &&
-			array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
-		)
-	) {
+	if ( ! function_exists( 'alg_wc_cond_shipping_is_pro_activated' ) ) {
+		/**
+		 * Check if Pro plugin version is activated.
+		 *
+		 * @version 2.2.0
+		 * @since   1.5.0
+		 */
+		function alg_wc_cond_shipping_is_pro_activated() {
+			$plugin = 'conditional-shipping-for-woocommerce-pro/conditional-shipping-for-woocommerce-pro.php';
+			return (
+				in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
+				(
+					is_multisite() &&
+					array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
+				)
+			);
+		}
+	}
+
+	if ( alg_wc_cond_shipping_is_pro_activated() ) {
 		defined( 'ALG_WC_CONDITIONAL_SHIPPING_FILE_FREE' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_FILE_FREE', __FILE__ );
 		return;
 	}
 }
 
-defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '2.1.3' );
+/**
+ * Plugin version.
+ */
+defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '2.2.0' );
 
+/**
+ * Plugin file.
+ */
 defined( 'ALG_WC_CONDITIONAL_SHIPPING_FILE' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_FILE', __FILE__ );
 
+/**
+ * Include the main plugin class.
+ */
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-alg-wc-cs.php';
 
 if ( ! function_exists( 'alg_wc_cond_shipping' ) ) {
@@ -55,4 +72,7 @@ if ( ! function_exists( 'alg_wc_cond_shipping' ) ) {
 	}
 }
 
+/**
+ * Initialize the plugin.
+ */
 add_action( 'plugins_loaded', 'alg_wc_cond_shipping' );
