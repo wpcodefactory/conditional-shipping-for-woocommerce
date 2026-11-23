@@ -2,16 +2,16 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Conditional Shipping for WooCommerce: Restrict Shipping Options by Anything 2.2.0\n"
+"Project-Id-Version: Conditional Shipping for WooCommerce: Restrict Shipping Options by Anything 2.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/conditional-shipping-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01T11:52:34+00:00\n"
+"POT-Creation-Date: 2026-11-23T12:21:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: conditional-shipping-for-woocommerce\n"
 
 #. Plugin Name of the plugin
@@ -175,11 +175,13 @@ msgstr ""
 
 #. Translators: %1$s: Date and time, %2$s: Date and time, %3$s: Date and time, %4$s: Result (yes or no).
 #: includes/class-alg-wc-cs-core.php:452
+#, php-format
 msgid "Date/time range: from %1$s to %2$s; current time: %3$s; result: %4$s"
 msgstr ""
 
 #. Translators: %s: City name.
 #: includes/class-alg-wc-cs-core.php:796
+#, php-format
 msgid "Customer city: %s"
 msgstr ""
 
@@ -187,6 +189,7 @@ msgstr ""
 #: includes/class-alg-wc-cs-hooks.php:146
 #: includes/settings/class-alg-wc-cs-settings-condition.php:165
 #: includes/settings/class-alg-wc-cs-settings-general.php:225
+#, php-format
 msgid "%shipping_method% is not available."
 msgstr ""
 
@@ -227,26 +230,31 @@ msgstr ""
 #. Translators: %s: Placeholder list.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:160
 #: includes/settings/class-alg-wc-cs-settings-general.php:218
+#, php-format
 msgid "Available placeholder(s): %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:196
+#, php-format
 msgid "Enable shipping method only before 3:00 PM each day: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:201
+#, php-format
 msgid "Enable shipping method only before 3:00 PM each day, or before 5:00 PM on Mondays: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:206
+#, php-format
 msgid "Enable shipping method for the summer months only: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:211
+#, php-format
 msgid "Enable shipping method for the February only: %s"
 msgstr ""
 
@@ -257,51 +265,61 @@ msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:223
+#, php-format
 msgid "Disable shipping method each day after 4:00 PM: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:228
+#, php-format
 msgid "Disable shipping method each day after 4:00 PM, and for the whole day on weekends: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:233
+#, php-format
 msgid "Disable shipping method for the summer months: %s"
 msgstr ""
 
 #. Translators: %s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:238
+#, php-format
 msgid "Disable shipping method for the February: %s"
 msgstr ""
 
 #. Translators: %s: URL.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:266
+#, php-format
 msgid "This section requires <a target=\"_blank\" href=\"%s\">WooCommerce Memberships</a> plugin."
 msgstr ""
 
 #. Translators: %1$s: Format, %2$s: Hyphen symbol.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:274
+#, php-format
 msgid "Options must be set as date range(s) in %1$s format, i.e., dates must be separated with the hyphen %2$s symbol."
 msgstr ""
 
 #. Translators: %1$s: Semicolon symbol, %2$s: Format.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:280
+#, php-format
 msgid "You can add multiple date ranges separated by the semicolon %1$s symbol, i.e., %2$s. Algorithm stops on first matching date range."
 msgstr ""
 
 #. Translators: %s: Function page link.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:286
+#, php-format
 msgid "Dates can be set in any format parsed by the PHP %s function."
 msgstr ""
 
 #. Translators: %1$s: From, %2$s: To, %3$s: Date example, %4$s: Date example.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:293
+#, php-format
 msgid "%1$s date must always be smaller than %2$s date. E.g., %3$s is <strong>not correct</strong>; you need to use %4$s instead."
 msgstr ""
 
 #. Translators: %s: Date and time.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:301
+#, php-format
 msgid "Current date: %s"
 msgstr ""
 
@@ -323,6 +341,7 @@ msgstr ""
 
 #. Translators: %d: Product ID.
 #: includes/settings/class-alg-wc-cs-settings-condition.php:489
+#, php-format
 msgid "Product #%d"
 msgstr ""
 
@@ -336,6 +355,7 @@ msgstr ""
 
 #. Translators: %s: Condition list.
 #: includes/settings/class-alg-wc-cs-settings-general.php:53
+#, php-format
 msgid "This option affects only these conditions: %s."
 msgstr ""
 
@@ -357,6 +377,7 @@ msgstr ""
 
 #. Translators: %s: Examples.
 #: includes/settings/class-alg-wc-cs-settings-general.php:146
+#, php-format
 msgid "Logical operator used when multiple conditions are enabled, for example: %s"
 msgstr ""
 
@@ -434,6 +455,7 @@ msgstr ""
 
 #. Translators: %s: Link.
 #: includes/settings/class-alg-wc-cs-settings-general.php:254
+#, php-format
 msgid "Will add a log to %s."
 msgstr ""
 
@@ -443,6 +465,7 @@ msgstr ""
 
 #. Translators: %s: Condition list.
 #: includes/settings/class-alg-wc-cs-settings-general.php:262
+#, php-format
 msgid "Currently this option affects only these conditions: %s."
 msgstr ""
 

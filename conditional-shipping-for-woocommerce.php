@@ -3,13 +3,13 @@
  * Plugin Name: Conditional Shipping for WooCommerce: Restrict Shipping Options by Anything
  * Plugin URI: https://wpfactory.com/item/conditional-shipping-for-woocommerce/
  * Description: Set conditions for WooCommerce shipping methods to show up.
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author: WPFactory
  * Author URI: https://wpfactory.com
  * Requires at least: 4.4
  * Text Domain: conditional-shipping-for-woocommerce
  * Domain Path: /langs
- * WC tested up to: 11.1
+ * WC tested up to: 11.3
  * Requires Plugins: woocommerce
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -48,7 +48,7 @@ if ( 'conditional-shipping-for-woocommerce.php' === basename( __FILE__ ) ) {
 /**
  * Plugin version.
  */
-defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '2.2.0' );
+defined( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION' ) || define( 'ALG_WC_CONDITIONAL_SHIPPING_VERSION', '2.2.1' );
 
 /**
  * Plugin file.
